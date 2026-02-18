@@ -35,7 +35,7 @@ p {
     border-radius: 8px;
     margin-top: 12px;
 }
-.input_first,.input_last,.pass_confirm, .input_phone, .input_age, .input_grad, .input_pass, .input_email{
+.input_name,.pass_confirm, .input_phone, .input_age,.input_pass, .input_email{
     margin: 10px auto;
     border-radius: 8px;
     border: 2px solid black;
