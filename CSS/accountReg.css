@@ -1,0 +1,61 @@
+html {
+    background-color: lightgray;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+    font-size: 14px;
+}
+.container-fluid {
+    max-width: 540px;
+    max-height: 720px;
+    border-radius: 8px;
+    padding-top: 30px;
+}
+.custom-hr {
+    width: 60%;
+    margin: 15px auto;
+    border: 2px solid black;
+}
+p {
+    width: 100%;
+    margin: 10px auto;
+    padding: 0 15px 10px 15px; 
+    font-size: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.input_btn {
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+.input_first,.input_last,.pass_confirm, .input_phone, .input_age, .input_grad, .input_pass, .input_email{
+    margin: 10px auto;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 6px;
+    font-size: 20px;
+    width: 90%;
+}
+form {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 26px;
+    width: 100%;
+    max-width: 540px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container-fluid h1 , h2, h3, header, div{
+    text-align: center;
+    text-justify: top;
+}
