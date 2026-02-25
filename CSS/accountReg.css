@@ -5,8 +5,8 @@ html {
     font-size: 14px;
 }
 .container-fluid {
-    max-width: 540px;
-    max-height: 720px;
+    max-width: 740px;
+    max-height: 920px;
     border-radius: 8px;
     padding-top: 30px;
 }
@@ -55,7 +55,27 @@ form {
     padding: 20px;
     box-sizing: border-box;
 }
-.container-fluid h1 , h2, h3, header, div{
+.container-fluid h1 , h2, h3 {
     text-align: center;
-    text-justify: top;
+    text-justify: center;
 }
+label {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    font-weight: 600;
+}
+.form-control {
+    text-align: left;
+}
+.form-group {
+    margin: 10px auto;
+    border-radius: 8px;
+    border: 2px solid black;
+    margin-bottom: 6px;
+    font-size: 20px;
+    width: 90%;
+}
+
+

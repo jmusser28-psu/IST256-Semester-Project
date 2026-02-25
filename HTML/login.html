@@ -8,23 +8,32 @@
 </head>
 <body>
     <form class = "container-fluid">
-        <header><img src="/images/Group 7 header.ico" height="99px" width="93"></header>
-        <h2><strong>Sign in to a Group7 News Account</strong></h2>
-        <h3>Don't have an account?<a href="/HTML/accountReg.html"><u>Sign up.</u></a></h3>
-
-        <div>
-            <input class="input_email" type="email" id="e-mail" name="e-mail" placeholder="Email Address">
-            <br>
-            <input class="input_pass" type="password" id="password" name="password" placeholder="Password">
-            
-        </div>
+        <header><img src="/images/Group7header.ico" height="99px" width="93"></header>
         <br>
+        <h4 class="text-center"><strong>Sign in to a Group7 News Account</strong></h4>
+        <br>
+
+        <div class="container-md rounded text-center">
+            <label for="email">Email:</label>
+            <input class="input_email" type="email" id="e-mail" name="e-mail" placeholder="janedoe@example.com">
+            <br>
+        </div>
+
+        <div class="container-md rounded text-center">
+            <label for="password" class="text-start">Password:</label>
+            <input class="input_pass" type="password" id="password" name="password" placeholder="Password">
+            <br>
+        </div>
+     
+
         <button class="input_btn" type="button" id="signin" name="signin" placeholder="Sign in">Sign In</button>
+
         <hr class="custom-hr">
         <div>
             <p>By signing up or signing in, you agree to our Terms of Use and acknowledge that you have read our Privacy Policy. Group 7 News may use your email address to send news updates, promotional messages, and special offers. You may opt out at any time through your account settings or our Privacy Policy.</p>
         </div>
         <br>
+        <p class="signUp">Don't have an account? <a href="/HTML/accountReg.html"><u>Sign up</u></a></p>
     </form>
 </body>
 </html>

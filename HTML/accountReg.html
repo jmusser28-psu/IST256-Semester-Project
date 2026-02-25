@@ -8,23 +8,42 @@
 </head>
 <body>
     <form class = "container-fluid">
-        <h1>Sign up</h1>
-        <div>
-            <input class="input_email" type="email" id="e-mail" name="e-mail" placeholder="Email Address">
-            <br>
-            <input class="input_name" type="name" id="name" name="input_name" placeholder="First and Last">
-            <br>
-            <input class="input_phone" type="phone" id="phone" name="phone" placeholder="Phone Number">
-            <br>
-            <label for="age">Date of Birth</label>
-            <br>
-            <input class="input_age" type="date" id="age" name="age" required>
-            <br>
-            <input class="input_pass" type="password" id="password" name="password" placeholder="Password">
-            <br>
-            <input class="pass_confirm" type="password" id="password" name="password" placeholder="Confirm Password">
-        </div>
-        <div>
+        <h1 class="text-center">Sign Up</h1>
+            <div class="container-md rounded text-center">
+                <label for="email">Email:</label>
+                <input class="input_email" type="email" id="e-mail" name="e-mail" placeholder="janedoe@example.com">
+                <br>
+            </div>
+            
+            <div class="container-md rounded text-center">
+                <label for="name" class="text-start">First and Last Name:</label>
+                <input class="input_name" type="name" id="name" name="input_name" placeholder="Jane Doe">
+                <br>
+            </div>
+            
+            <div class="container-md rounded text-center">
+                <label for="phone" class="text-start">Phone Number:</label>
+                <input class="input_phone" type="phone" id="phone" name="phone" placeholder="123-456-7890">
+                <br>
+            </div>
+            
+            <div class="container-md rounded text-center">
+                <label for="age" class="text-start">Date of Birth:</label>
+                <input class="input_age" type="date" id="age" name="age" required>
+                <br>
+            </div>
+
+            <div class="container-md rounded text-center">
+                <label for="password" class="text-start">Password:</label>
+                <input class="input_pass" type="password" id="password" name="password" placeholder="Password">
+                <br>
+            </div>
+            
+            <div class="container-md rounded text-center">
+                <label for="passwordConfirm" class="text-start">Retype Password:</label>
+                <input class="pass_confirm" type="password" id="passwordConfirm" name="password" placeholder="Password">
+            </div>
+        <div class="container-md rounded text-center">
             <button class="input_btn" type="button" id="signup" name="signup" placeholder="Sign up">Sign Up</button>
             <small><p>Already have an account? <a href="/HTML/login.html">Log in.</a></p></small>
         </div>

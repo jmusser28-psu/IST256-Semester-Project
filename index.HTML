@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="/CSS/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
     <title>Group 7</title>
     <link rel="icon" type="images/x-ico" href="images/Group7.ico">
 </head>
 <body>
     <header>
-       <nav class="navbar text-start" data-target="navBarContent">
-        <ul class="nav navbar-nav">
+       <nav class="navbar navbar-expand-lg" data-target="navBarContent">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <img src="images/Group7.ico" width="60" height="60">
             </li>
 
-            <li class="nav-item active">
-                <a href="#home" class="nav-link">Home</a>
+            <li class="nav-item active navPadding">
+                <a href="#home" class="nav-link"><strong>Home</strong></a>
             </li>
-            <li class="nav-item active">
-                <a href="#news" class="nav-link">Local News</a>
+            <li class="nav-item active navPadding">
+                <a href="#news" class="nav-link"><strong>Local News</strong></a>
             </li>
-            <li class="nav-item active">
-                <a href="sports" class="nav-link">Sports</a>
+            <li class="nav-item active navPadding">
+                <a href="sports" class="nav-link"><strong>Sports</strong></a>
             </li>
-            <li class="nav-item active">
-                <a href="politics" class="nav-link">Politics</a>
+            <li class="nav-item active navPadding">
+                <a href="politics" class="nav-link"><strong>Politics</strong></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" data-target="dropdown">Account</a>
+            <li class="nav-item dropdown navPadding">
+                <a href="politics" class="nav-link"><strong>Sign In</strong></a>
             </li>
+            
+<select id="page-select" onchange="window.location.href=this.value" placeholder="Account Management">
+
+  <label>Account Management</label>
+  <option value="./HTML/accountReg.html">Registration</option>
+  <option value="./HTML/login.html">Login</option>
+</select>
         </ul>
        </nav>
     </header>
