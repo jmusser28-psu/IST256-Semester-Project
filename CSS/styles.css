@@ -7,8 +7,9 @@ header {
     padding-right: 5px;
     border-bottom: #001E44;
     word-spacing: 2;
+    background-color: rgb(220, 220, 255);
 }
-* {
+html {
     background-color: rgb(220, 220, 255);
 }
 .missionStatement {
