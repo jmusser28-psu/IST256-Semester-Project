@@ -10,32 +10,56 @@
 </head>
 <body>
     <header>
-       <nav class="navbar text-start">
-        <img src="images/Group7.ico" width="60" height="60">
-       </nav>
-       
-       <div> 
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="#home" class="active nav-link">Home</a>
+       <nav class="navbar text-start" data-target="navBarContent">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <img src="images/Group7.ico" width="60" height="60">
             </li>
-            <li class="nav-item">
-                <a href="#news" class="active nav-link">Local News</a>
+
+            <li class="nav-item active">
+                <a href="#home" class="nav-link">Home</a>
             </li>
-            <li class="nav-item">
-                <a href="sports" class="active nav-link">Sports</a>
+            <li class="nav-item active">
+                <a href="#news" class="nav-link">Local News</a>
             </li>
-            <li class="nav-item">
-                <a href="politics" class="active nav-link">Politics</a>
+            <li class="nav-item active">
+                <a href="sports" class="nav-link">Sports</a>
+            </li>
+            <li class="nav-item active">
+                <a href="politics" class="nav-link">Politics</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-target="dropdown">Account</a>
             </li>
         </ul>
-
-       </div>
-        
+       </nav>
     </header>
+
+    <div class="container-fluid d-flex flex-row">
+        <div class="container-md border rounded">
+            <div class="text-center border-bottom">
+                <img src="images/Group7.ico" width="60" height="60">
+            </div>
+            <p class="text-center">Here's some info about ourselves</p>
+            </div>
+    
+        <div class="container-md border rounded">
+            <div class="text-center border-bottom">
+                <img src="images/Group7.ico" width="60" height="60">
+            </div>
+            <p class="text-center">Here's some info about ourselves</p>
+        </div>
+
+        <div class="container-md border rounded">
+            <div class="text-center border-bottom">
+                <img src="images/Group7.ico" width="60" height="60">
+            </div>
+            <p class="text-center">Here's some info about ourselves</p>
+        </div>
+    </div>
     
 </body>
 <footer>
-    <h2 class="text-center"><i>"Delivering the truth effectively and efficiently"</i></h2>
+    <p class="text-center missionStatement"><i>Delivering the truth effectively and efficiently</i></p>
 </footer>
 </html>

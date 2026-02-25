@@ -11,3 +11,6 @@ header {
 * {
     background-color: rgb(220, 220, 255);
 }
+.missionStatement {
+    font-size: 16pt;
+}
