@@ -28,16 +28,12 @@
             <li class="nav-item active navPadding">
                 <a href="politics" class="nav-link"><strong>Politics</strong></a>
             </li>
-            <li class="nav-item dropdown navPadding">
-                <a href="politics" class="nav-link"><strong>Sign In</strong></a>
-            </li>
             
-<select id="page-select" onchange="window.location.href=this.value" placeholder="Account Management">
-
-  <label>Account Management</label>
-  <option value="./HTML/accountReg.html">Registration</option>
-  <option value="./HTML/login.html">Login</option>
-</select>
+            <select id="page-select" onchange="window.location.href=this.value" placeholder="Account Management">
+                <option selected disabled hidden>Account Management</option>
+                <option value="./HTML/accountReg.html">Registration</option>
+                <option value="./HTML/login.html">Login</option>
+            </select>
         </ul>
        </nav>
     </header>
