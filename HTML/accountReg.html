@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<script src="/JS/validation.js"></script>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/CSS/accountReg.css">
@@ -7,23 +8,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <form class = "container-fluid">
+    <form class = "container-fluid" onsubmit="return validate()" name="signupForm" method="get">
         <h1 class="text-center">Sign Up</h1>
             <div class="container-md rounded text-center">
                 <label for="email">Email:</label>
-                <input class="input_email" type="email" id="e-mail" name="e-mail" placeholder="janedoe@example.com">
+                <input class="input_email" type="email" id="email" name="email" placeholder="janedoe@example.com" required>
                 <br>
             </div>
             
             <div class="container-md rounded text-center">
                 <label for="name" class="text-start">First and Last Name:</label>
-                <input class="input_name" type="name" id="name" name="input_name" placeholder="Jane Doe">
+                <input class="input_name" type="name" id="name" name="input_name" placeholder="Jane Doe" required>
                 <br>
             </div>
             
             <div class="container-md rounded text-center">
                 <label for="phone" class="text-start">Phone Number:</label>
-                <input class="input_phone" type="phone" id="phone" name="phone" placeholder="123-456-7890">
+                <input class="input_phone" type="phone" id="phone" name="phone" placeholder="123-456-7890" required>
                 <br>
             </div>
             
@@ -35,16 +36,16 @@
 
             <div class="container-md rounded text-center">
                 <label for="password" class="text-start">Password:</label>
-                <input class="input_pass" type="password" id="password" name="password" placeholder="Password">
+                <input class="input_pass" type="password" id="password" name="password" placeholder="Password" required>
                 <br>
             </div>
             
             <div class="container-md rounded text-center">
                 <label for="passwordConfirm" class="text-start">Retype Password:</label>
-                <input class="pass_confirm" type="password" id="passwordConfirm" name="password" placeholder="Password">
+                <input class="pass_confirm" type="password" id="passwordConfirm" name="password" placeholder="Password" required>
             </div>
         <div class="container-md rounded text-center">
-            <button class="input_btn" type="button" id="signup" name="signup" placeholder="Sign up">Sign Up</button>
+            <input type="submit" value="Sign Up" class="rounded">
             <small><p>Already have an account? <a href="/HTML/login.html">Log in.</a></p></small>
         </div>
         <hr class="custom-hr">
