@@ -36,6 +36,41 @@ function emailHandling(email) {
    return true;
 }
 
+function addressHandling(address) {
+   if (address.length == 0) {return false;}
+
+   if (address.includes('@')) {}
+   else {return false;}
+
+   let atCount = 0;
+   for (let i = 0; i < address.length; i++) {
+      if (address.charCodeAt(i) == 64) {
+         atCount = atCount + 1;
+      }
+   }
+   if (atCount > 1) {return false;}
+
+   if (address.includes('.')) {}
+   else {return false;}
+
+   for (let i = 0; i < address.length; i++) {
+      if ((address.charCodeAt(i) >= 64 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 46)) {}
+      else {return false;}
+   }
+
+   return true;
+}
+
+function phoneHandling(phoneNumber) {
+   let phoneExp = /^\d{3}-\d{3}-\d{4}$/;
+   if (phoneExp.test(phoneNumber) == true) {}
+   else {
+      return false;
+   }
+
+   return true;
+}
+
 function phoneHandling(phoneNumber) {
    let phoneExp = /^\d{3}-\d{3}-\d{4}$/;
    if (phoneExp.test(phoneNumber) == true) {}
@@ -50,11 +85,17 @@ function validate() {
    let email = document.forms["signupForm"]["email"].value;
    let name = document.forms["signupForm"]["name"].value;
    let phoneNumber = document.forms["signupForm"]["phone"].value;
-   let passwordFirst = document.forms["signupForm"]["password"].value;
+   let passwordFirst = document.forms["signupForm"]["passwordOriginal"].value;
    let passwordSecond = document.forms["signupForm"]["passwordConfirm"].value;
-   console.log(`${email}`);
+   let address = document.forms["signupForm"]["address"].value;
 
    if (nameHandling(name) == true) {}
+   else {
+      alert(`Invalid name: ${name}`);
+      return false;
+   }
+
+   if (nameHandling(address) == true) {}
    else {
       alert(`Invalid name: ${name}`);
       return false;
@@ -72,7 +113,9 @@ function validate() {
       return false;
    }
 
-   if ((passwordFirst.length > 12 && passwordFirst === passwordSecond) == false) {
+   console.log(passwordFirst);
+   console.log(passwordSecond);
+   if ((passwordFirst.length > 12 && passwordFirst == passwordSecond) == false) {
       alert(`Invalid password length or passwords do not match`);
       return false;
    }
