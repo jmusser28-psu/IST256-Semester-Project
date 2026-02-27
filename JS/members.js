@@ -5,6 +5,7 @@ document.getElementById("signupForm").addEventListener("submit", function(e) {
     const name = document.getElementById("name").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const age = document.getElementById("age").value;
+    const address = document.getElementById("address").value.trim();
 
     if (!email || !name || !age) {
         alert("Please fill in all required fields.");
@@ -12,7 +13,7 @@ document.getElementById("signupForm").addEventListener("submit", function(e) {
     }
 
     let members = JSON.parse(localStorage.getItem("members")) || [];
-    members.push({ email, name, phone, age });
+    members.push({ email, name, phone, age, address});
 
     localStorage.setItem("members", JSON.stringify(members));
     alert("Member added successfully!");
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td>${member.name}</td>
                 <td>${member.phone}</td>
                 <td>${member.age}</td>
+                <td>${member.address}</td>
             </tr>
         `;
 
