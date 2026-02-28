@@ -39,9 +39,6 @@ function emailHandling(email) {
 function addressHandling(address) {
    if (address.length == 0) {return false;}
 
-   if (address.includes('@')) {}
-   else {return false;}
-
    let atCount = 0;
    for (let i = 0; i < address.length; i++) {
       if (address.charCodeAt(i) == 64) {
@@ -50,11 +47,8 @@ function addressHandling(address) {
    }
    if (atCount > 1) {return false;}
 
-   if (address.includes('.')) {}
-   else {return false;}
-
    for (let i = 0; i < address.length; i++) {
-      if ((address.charCodeAt(i) >= 64 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 46)) {}
+      if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32)) {}
       else {return false;}
    }
 
@@ -95,9 +89,9 @@ function validate() {
       return false;
    }
 
-   if (nameHandling(address) == true) {}
+   if (addressHandling(address) == true) {}
    else {
-      alert(`Invalid name: ${name}`);
+      alert(`Invalid address: ${address}`);
       return false;
    }
 
@@ -113,12 +107,34 @@ function validate() {
       return false;
    }
 
-   console.log(passwordFirst);
-   console.log(passwordSecond);
+   if (addressHandling(address) == true) {}
+   else {
+      alert(`Invalid address: ${address}`);
+      return false;
+   }
+
    if ((passwordFirst.length > 12 && passwordFirst == passwordSecond) == false) {
       alert(`Invalid password length or passwords do not match`);
       return false;
    }
 
+   let submit = new submitJSON(name, email, phone, age, passwordFirst);
+   submit.pushJSON();
+
    return true;
+}
+
+function submitJSON() {
+   let email = document.forms["signupForm"]["email"].value;
+   let name = document.forms["signupForm"]["name"].value;
+   let phoneNumber = document.forms["signupForm"]["phone"].value;
+   let password = document.forms["signupForm"]["passwordOriginal"].value;
+   let address = document.forms["signupForm"]["address"].value;
+   let age = document.forms["signupForm"]["age"].value;
+
+   let members = JSON.parse(localStorage.getItem("members")) || [];
+   members.push({email, name, phoneNumber, age, address, password});
+   localStorage.setItem("members", JSON.stringify(members));
+   alert("Member added successfully!");
+   document.getElementById("signupForm").reset();
 }
