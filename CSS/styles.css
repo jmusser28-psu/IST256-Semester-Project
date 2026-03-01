@@ -17,9 +17,6 @@ header {
     font-weight: 1000;
     color: black;
 }
-html {
-    background-color: rgb(240, 240, 255);
-}
     
 .missionStatement {
     font-size: 16pt;
@@ -33,4 +30,8 @@ select {
     font-weight: 1000;
     color: black;
     text-align: center;
+}
+
+img {
+    padding: 5px;
 }
