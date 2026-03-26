@@ -378,8 +378,22 @@ $(document).on("click", "#checkoutBtn", function() {
     htmlString = "";
     let textAreaBox = `<input type="text" id="creditInfo" placeholder="0123-4567-8910-1112"></input>`
     let button = `<button id="transactionCheckout">Complete Transaction</button>`
-    htmlString = htmlString + `Enter Credit Card Info: ${textAreaBox} ${button}`;
+    htmlString = htmlString + `Enter Credit Card Info: ${textAreaBox}`;
     $("#creditBox").html(htmlString);
+
+    htmlString = "";
+    textAreaBox = `<input type="text" id="billingInfo" placeholder="1234 rainbow rd."></input>`
+    htmlString = htmlString + `Enter Billing Address: ${textAreaBox}`;
+    $("#billingBox").html(htmlString);
+
+    htmlString = "";
+    textAreaBox = `<input type="text" id="zipInfo" placeholder="16802"></input>`
+    htmlString = htmlString + `Enter Zip Code: ${textAreaBox}`;
+    $("#zipBox").html(htmlString);
+    
+    htmlString = "";
+    htmlString = htmlString + `${button}`;
+    $("#completeTransaction").html(htmlString);
 
     htmlString = "";
     button = `<button id="transactionCancelBtn">Cancel Transaction</button>`
@@ -389,23 +403,47 @@ $(document).on("click", "#checkoutBtn", function() {
 
 $(document).on("click", "#transactionCheckout", function() {
     let creditNumber = $("#creditInfo").val();
+    let billingAddress = $("#billingInfo").val();
+    let zip = $("#zipInfo").val();
+
+    let creditValid = false;
+    let billingValid = false;
+    let zipValid = false;
 
     let checkoutButtons = [102, 112, 122, 202, 212, 222, 302, 312, 322];
 
     let cardExp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
     if (cardExp.test(creditNumber) == true) {
+        creditValid = true;
+    }
+    else {
+        alert("Invalid Card Info");
+    }
+
+    billingValid = addressHandling(billingAddress);
+    console.log(billingValid);
+
+    if (billingValid == false) {
+        alert("Invalid billing address")
+    }
+
+    let zipExp = /^\d{5}$/;
+    if (zipExp.test(zip) == true) {
+        zipValid = true;
+    }
+    else {
+        alert("Invalid zip code")
+    }
+
+    if (creditValid && billingValid && zipValid) {
         articleIDCart = [];
         articleCostCart = [];
         $("#transactionContainer").attr("hidden", true);
         alert("Transaction Successful, Thank You for your Purchase!")
-
         for (let i = 0; i < checkoutButtons.length; i++) {
             let buttonEnable = `#${checkoutButtons[i]}`
             $(buttonEnable).attr("disabled", false);
         }
-    }
-    else {
-        alert("Invalid Card Info");
     }
 })
 
@@ -421,3 +459,22 @@ $(document).on("click", "#transactionCancelBtn", function() {
         $(buttonEnable).attr("disabled", false);
     }
 })
+
+function addressHandling(address) {
+   if (address.length == 0) {return false;}
+
+   let atCount = 0;
+   for (let i = 0; i < address.length; i++) {
+      if (address.charCodeAt(i) == 64) {
+         atCount = atCount + 1;
+      }
+   }
+   if (atCount > 1) {return false;}
+
+   for (let i = 0; i < address.length; i++) {
+      if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32)) {}
+      else {return false;}
+   }
+
+   return true;
+}
