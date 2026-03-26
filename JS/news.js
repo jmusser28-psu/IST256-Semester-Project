@@ -390,6 +390,11 @@ $(document).on("click", "#checkoutBtn", function() {
     textAreaBox = `<input type="text" id="zipInfo" placeholder="16802"></input>`
     htmlString = htmlString + `Enter Zip Code: ${textAreaBox}`;
     $("#zipBox").html(htmlString);
+
+    htmlString = "";
+    textAreaBox = `<input type="text" id="emailInfo" placeholder="example@example.com"></input>`
+    htmlString = htmlString + `Enter Email Address: ${textAreaBox}`;
+    $("#emailBox").html(htmlString);
     
     htmlString = "";
     htmlString = htmlString + `${button}`;
@@ -405,10 +410,12 @@ $(document).on("click", "#transactionCheckout", function() {
     let creditNumber = $("#creditInfo").val();
     let billingAddress = $("#billingInfo").val();
     let zip = $("#zipInfo").val();
+    let email = $("#emailInfo").val();
 
     let creditValid = false;
     let billingValid = false;
     let zipValid = false;
+    let emailValid = false;
 
     let checkoutButtons = [102, 112, 122, 202, 212, 222, 302, 312, 322];
 
@@ -421,10 +428,15 @@ $(document).on("click", "#transactionCheckout", function() {
     }
 
     billingValid = addressHandling(billingAddress);
-    console.log(billingValid);
 
     if (billingValid == false) {
         alert("Invalid billing address")
+    }
+
+    emailValid = emailHandling(email);
+
+    if (emailValid == false) {
+        alert("Invalid email address")
     }
 
     let zipExp = /^\d{5}$/;
@@ -435,7 +447,7 @@ $(document).on("click", "#transactionCheckout", function() {
         alert("Invalid zip code")
     }
 
-    if (creditValid && billingValid && zipValid) {
+    if (creditValid && billingValid && zipValid && emailValid) {
         articleIDCart = [];
         articleCostCart = [];
         $("#transactionContainer").attr("hidden", true);
@@ -473,6 +485,31 @@ function addressHandling(address) {
 
    for (let i = 0; i < address.length; i++) {
       if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32)) {}
+      else {return false;}
+   }
+
+   return true;
+}
+
+function emailHandling(email) {
+   if (email.length == 0) {return false;}
+
+   if (email.includes('@')) {}
+   else {return false;}
+
+   let atCount = 0;
+   for (let i = 0; i < email.length; i++) {
+      if (email.charCodeAt(i) == 64) {
+         atCount = atCount + 1;
+      }
+   }
+   if (atCount > 1) {return false;}
+
+   if (email.includes('.')) {}
+   else {return false;}
+
+   for (let i = 0; i < email.length; i++) {
+      if ((email.charCodeAt(i) >= 64 && email.charCodeAt(i) <= 90) || (email.charCodeAt(i) >= 97 && email.charCodeAt(i) <= 122) || (email.charCodeAt(i) >= 48 && email.charCodeAt(i) <= 57) || (email.charCodeAt(i) == 46)) {}
       else {return false;}
    }
 
