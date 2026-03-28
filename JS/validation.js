@@ -48,7 +48,7 @@ function addressHandling(address) {
    if (atCount > 1) {return false;}
 
    for (let i = 0; i < address.length; i++) {
-      if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32)) {}
+      if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32) || (address.charCodeAt(i) == 46)) {}
       else {return false;}
    }
 
