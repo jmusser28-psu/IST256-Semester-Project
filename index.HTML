@@ -1,4 +1,4 @@
-​​<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,42 @@
     <link rel="stylesheet" href="CSS/styles.css">
     <title>Group 7</title> 
     <link rel="icon" type="image/x-icon" href="images/Group7.ico">
+
+    <style>
+
+        .main-headline {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+
+        .side-article {
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+            padding: 8px 0;
+        }
+
+        .article-card {
+            width: 30%;
+            margin: 10px;
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .article-card h3 {
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,41 +75,58 @@
     </nav>
 </header>
 
-<div class="container my-5">
-    <div class="row g-4">
 
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <img src="images/old_main_1.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <p>Hi, we are Group 7 Media, a one stop shop for everything Happy Valley.</p>
-                </div>
-            </div>
+<div class="container mt-4">
+    <div class="row">
+
+
+        <div class="col-md-3">
+            <div class="side-article">Happy Valley sees increase in local activity</div>
+            <div class="side-article">Penn State students prepare for finals</div>
+            <div class="side-article">Downtown businesses booming this semester</div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <img src="images/old_main_2.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <p>Here is our home page were you can access everything from local news, to sports, to politics.</p>
-                </div>
-            </div>
+
+        <div class="col-md-6">
+            <h1 class="main-headline">Welcome to Group 7 Media</h1>
+            <img src="images/old_main_1.jpg" class="main-img">
+            <p>Hi, we are Group 7 Media, a one stop shop for everything Happy Valley.</p>
         </div>
 
-        <div class="col-md-4">
-            <div class="card shadow h-100">
-                <img src="images/old_main_3.jpg" class="card-img-top">
-                <div class="card-body text-center">
-                    <p>We pride ourselves in delivering high quality content that you would expect from a professional news outlet.</p>
-                </div>
-            </div>
+
+        <div class="col-md-3">
+            <div class="side-article">Latest sports updates from Penn State</div>
+            <div class="side-article">Political debates heating up locally</div>
+            <div class="side-article">Weekend events you shouldn't miss</div>
         </div>
 
     </div>
 </div>
 
-<footer class="bg-primary text-white text-center py-3">
-    <p class="mb-0"><em>Delivering the truth effectively and efficiently</em></p>
+<div class="container mt-4 d-flex flex-wrap justify-content-between">
+
+    <div class="article-card">
+        <img src="images/old_main_1.jpg">
+        <h3>Local News Coverage</h3>
+        <p>Stay updated with everything happening in Happy Valley.</p>
+    </div>
+
+    <div class="article-card">
+        <img src="images/old_main_2.jpg">
+        <h3>Sports & Athletics</h3>
+        <p>Follow Penn State sports and major events.</p>
+    </div>
+
+    <div class="article-card">
+        <img src="images/old_main_3.jpg">
+        <h3>Politics & More</h3>
+        <p>Coverage of political stories and discussions.</p>
+    </div>
+
+</div>
+
+<footer class="bg-primary text-white text-center py-3 mt-4">
+    <p class="mb-0"><em>Bringing Happy Valley the stories that matter, when they matter.</em></p>
 </footer>
 
 </body>
