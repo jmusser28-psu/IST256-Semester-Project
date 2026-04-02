@@ -177,133 +177,157 @@ $("#321").on("click", function() {
     $("#321").html("Dislike: 1");
 })
 
+// let articleIDCart = [];
+// let articleCostCart = [];
+
+// Previously hardcoded lines for adding an article to the shopping cart.
+// $("#102").on("click", function() {
+//     $("#102").attr("disabled", true);
+//     articleIDCart.unshift($("#102").attr('id'));
+//     articleCostCart.unshift($("#102").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#112").on("click", function() {
+//     $("#112").attr("disabled", true);
+//     articleIDCart.unshift($("#112").attr('id'));
+//     articleCostCart.unshift($("#112").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#122").on("click", function() {
+//     $("#122").attr("disabled", true);
+//     articleIDCart.unshift($("#122").attr('id'));
+//     articleCostCart.unshift($("#122").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#202").on("click", function() {
+//     $("#202").attr("disabled", true);
+//     articleIDCart.unshift($("#202").attr('id'));
+//     articleCostCart.unshift($("#202").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#212").on("click", function() {
+//     $("#212").attr("disabled", true);
+//     articleIDCart.unshift($("#212").attr('id'));
+//     articleCostCart.unshift($("#212").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#222").on("click", function() {
+//     $("#222").attr("disabled", true);
+//     articleIDCart.unshift($("#222").attr('id'));
+//     articleCostCart.unshift($("#222").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#302").on("click", function() {
+//     $("#302").attr("disabled", true);
+//     articleIDCart.unshift($("#302").attr('id'));
+//     articleCostCart.unshift($("#302").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#312").on("click", function() {
+//     $("#312").attr("disabled", true);
+//     articleIDCart.unshift($("#312").attr('id'));
+//     articleCostCart.unshift($("#312").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+// $("#322").on("click", function() {
+//     $("#322").attr("disabled", true);
+//     articleIDCart.unshift($("#322").attr('id'));
+//     articleCostCart.unshift($("#322").val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
+
 let articleIDCart = [];
 let articleCostCart = [];
+let subscribed = false;
 
-$("#102").on("click", function() {
-    $("#102").attr("disabled", true);
-    articleIDCart.unshift($("#102").attr('id'));
-    articleCostCart.unshift($("#102").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
+$(document).on("click", ".cartButtonAddPress", function() {
+    let id = $(this).attr('id');
+    id = "#" + id;
 
-$("#112").on("click", function() {
-    $("#112").attr("disabled", true);
-    articleIDCart.unshift($("#112").attr('id'));
-    articleCostCart.unshift($("#112").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#122").on("click", function() {
-    $("#122").attr("disabled", true);
-    articleIDCart.unshift($("#122").attr('id'));
-    articleCostCart.unshift($("#122").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#202").on("click", function() {
-    $("#202").attr("disabled", true);
-    articleIDCart.unshift($("#202").attr('id'));
-    articleCostCart.unshift($("#202").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#212").on("click", function() {
-    $("#212").attr("disabled", true);
-    articleIDCart.unshift($("#212").attr('id'));
-    articleCostCart.unshift($("#212").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#222").on("click", function() {
-    $("#222").attr("disabled", true);
-    articleIDCart.unshift($("#222").attr('id'));
-    articleCostCart.unshift($("#222").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#302").on("click", function() {
-    $("#302").attr("disabled", true);
-    articleIDCart.unshift($("#302").attr('id'));
-    articleCostCart.unshift($("#302").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#312").on("click", function() {
-    $("#312").attr("disabled", true);
-    articleIDCart.unshift($("#312").attr('id'));
-    articleCostCart.unshift($("#312").val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
-})
-
-$("#322").on("click", function() {
-    $("#322").attr("disabled", true);
-    articleIDCart.unshift($("#322").attr('id'));
-    articleCostCart.unshift($("#322").val());
+    $(id).attr("disabled", true);
+    articleIDCart.unshift($(this).attr('id'));
+    articleCostCart.unshift($(this).val());
     $("#checkoutContainer").attr("hidden", false);
     let htmlString = "";
     for (let i = 0; i < articleIDCart.length; i++) {
@@ -324,8 +348,6 @@ $(document).on("click", ".buttonPress", function() {
             indexFound = i;
         }
     }
-    console.log(indexFound);
-
 
     articleIDCart.splice(indexFound, 1);
     articleCostCart.splice(indexFound, 1)
@@ -417,7 +439,7 @@ $(document).on("click", "#transactionCheckout", function() {
     let zipValid = false;
     let emailValid = false;
 
-    let checkoutButtons = [102, 112, 122, 202, 212, 222, 302, 312, 322];
+    let checkoutButtons = [2, 102, 112, 122, 202, 212, 222, 302, 312, 322];
 
     let cardExp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
     if (cardExp.test(creditNumber) == true) {
@@ -448,10 +470,20 @@ $(document).on("click", "#transactionCheckout", function() {
     }
 
     if (creditValid && billingValid && zipValid && emailValid) {
+        for (let i = 0; i < articleIDCart.length; i++) {
+            console.log(articleIDCart);
+            if (articleIDCart[i] == 2) {
+                subscribed = true;
+                $("#2").attr("hidden", true)
+                $("#1").attr("hidden", false)
+            }
+        }
+        
         articleIDCart = [];
         articleCostCart = [];
         $("#transactionContainer").attr("hidden", true);
         alert("Transaction Successful, Thank You for your Purchase!")
+
         for (let i = 0; i < checkoutButtons.length; i++) {
             let buttonEnable = `#${checkoutButtons[i]}`
             $(buttonEnable).attr("disabled", false);
@@ -460,7 +492,7 @@ $(document).on("click", "#transactionCheckout", function() {
 })
 
 $(document).on("click", "#transactionCancelBtn", function() {
-    let checkoutButtons = [102, 112, 122, 202, 212, 222, 302, 312, 322];
+    let checkoutButtons = [2, 102, 112, 122, 202, 212, 222, 302, 312, 322];
     articleIDCart = [];
     articleCostCart = [];
 
@@ -470,6 +502,20 @@ $(document).on("click", "#transactionCancelBtn", function() {
         let buttonEnable = `#${checkoutButtons[i]}`
         $(buttonEnable).attr("disabled", false);
     }
+})
+
+$(document).on("click", "#1", function() {
+    $("#unsubscribeContainer").attr("hidden", false)
+})
+
+$(document).on("click", "#unsubscribeContainer", function() {
+    $("#1").attr("hidden", true);
+    $("#2").attr("hidden", false);
+    subscribed = false;
+    $("#unsubscribeContainer").attr("hidden", true);
+    alert("You have successfully unsubscribed!");
+    
+    
 })
 
 function addressHandling(address) {
