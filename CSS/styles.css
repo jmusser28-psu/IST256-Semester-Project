@@ -29,6 +29,12 @@ header {
    padding-left: 20px;
    padding-top: 10px;
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 select {
     background-color: white;
     font-weight: 1000;
