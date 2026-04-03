@@ -333,7 +333,12 @@ $(document).on("click", ".cartButtonAddPress", function() {
     for (let i = 0; i < articleIDCart.length; i++) {
         let buttonID = `${articleIDCart[i]}btn`;
         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+        if (articleIDCart[i] != 2) {
+            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+        }
+        else {
+            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
+        }
     }
     $("#checkoutList").html(htmlString);
     getCost();
@@ -356,7 +361,12 @@ $(document).on("click", ".buttonPress", function() {
     for (let i = 0; i < articleIDCart.length; i++) {
         let buttonID = `${articleIDCart[i]}btn`;
         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+        if (articleIDCart[i] != 2) {
+            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+        }
+        else {
+            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
+        }
     }
     if (articleIDCart.length == 0) {
         $("#checkoutContainer").attr("hidden", true);
@@ -392,7 +402,12 @@ $(document).on("click", "#checkoutBtn", function() {
     $("#transactionContainer").attr("hidden", false);
     let htmlString = "";
     for (let i = 0; i < articleIDCart.length; i++) {
-        htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]}<br>`;
+        if (articleIDCart[i] != 2) {
+            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]}<br>`;
+        }
+        else {
+            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]}<br>`;
+        }
     }
     $("#itemList").html(htmlString);
     getCost();
@@ -476,6 +491,8 @@ $(document).on("click", "#transactionCheckout", function() {
                 subscribed = true;
                 $("#2").attr("hidden", true)
                 $("#1").attr("hidden", false)
+                $("#dailyArticle").attr("hidden", false);
+                $(".subscriber").attr("hidden", true);
             }
         }
         
@@ -513,8 +530,9 @@ $(document).on("click", "#unsubscribeContainer", function() {
     $("#2").attr("hidden", false);
     subscribed = false;
     $("#unsubscribeContainer").attr("hidden", true);
+    $("#dailyArticle").attr("hidden", true);
+    $(".subscriber").attr("hidden", false);
     alert("You have successfully unsubscribed!");
-    
     
 })
 
