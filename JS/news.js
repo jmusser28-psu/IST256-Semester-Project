@@ -412,6 +412,8 @@ $(document).on("click", "#checkoutBtn", function() {
     $("#itemList").html(htmlString);
     getCost();
 
+    $(".cartButtonAddPress").attr("disabled", true);
+
     htmlString = "";
     let textAreaBox = `<input type="text" id="creditInfo" placeholder="0123-4567-8910-1112"></input>`
     let button = `<button id="transactionCheckout">Complete Transaction</button>`
@@ -501,24 +503,17 @@ $(document).on("click", "#transactionCheckout", function() {
         $("#transactionContainer").attr("hidden", true);
         alert("Transaction Successful, Thank You for your Purchase!")
 
-        for (let i = 0; i < checkoutButtons.length; i++) {
-            let buttonEnable = `#${checkoutButtons[i]}`
-            $(buttonEnable).attr("disabled", false);
-        }
+        $(".cartButtonAddPress").attr("disabled", false)
     }
 })
 
 $(document).on("click", "#transactionCancelBtn", function() {
-    let checkoutButtons = [2, 102, 112, 122, 202, 212, 222, 302, 312, 322];
     articleIDCart = [];
     articleCostCart = [];
 
     $("#transactionContainer").attr("hidden", true);
     alert("Transaction Successfully Canceled")
-    for (let i = 0; i < checkoutButtons.length; i++) {
-        let buttonEnable = `#${checkoutButtons[i]}`
-        $(buttonEnable).attr("disabled", false);
-    }
+    $(".cartButtonAddPress").attr("disabled", false)
 })
 
 $(document).on("click", "#1", function() {
