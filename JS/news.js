@@ -520,7 +520,7 @@ $(document).on("click", "#1", function() {
     $("#unsubscribeContainer").attr("hidden", false)
 })
 
-$(document).on("click", "#unsubscribeContainer", function() {
+$(document).on("click", "#unsubscribeButton", function() {
     $("#1").attr("hidden", true);
     $("#2").attr("hidden", false);
     subscribed = false;

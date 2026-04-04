@@ -53,4 +53,5 @@ button {
 .btn {
     background-color: white;
     color: black;
+    margin: 5px;
 }
