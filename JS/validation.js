@@ -75,7 +75,73 @@ function phoneHandling(phoneNumber) {
    return true;
 }
 
-function validate() {
+// function validate() {
+//    let email = document.forms["signupForm"]["email"].value;
+//    let name = document.forms["signupForm"]["name"].value;
+//    let phoneNumber = document.forms["signupForm"]["phone"].value;
+//    let passwordFirst = document.forms["signupForm"]["passwordOriginal"].value;
+//    let passwordSecond = document.forms["signupForm"]["passwordConfirm"].value;
+//    let address = document.forms["signupForm"]["address"].value;
+
+//    if (nameHandling(name) == true) {}
+//    else {
+//       alert(`Invalid name: ${name}`);
+//       return false;
+//    }
+
+//    if (addressHandling(address) == true) {}
+//    else {
+//       alert(`Invalid address: ${address}`);
+//       return false;
+//    }
+
+//    if (emailHandling(email) == true) {}
+//    else {
+//       alert(`Invalid email: ${email}`);
+//       return false;
+//    }
+
+//    if (phoneHandling(phoneNumber) == true) {}
+//    else {
+//       alert(`Invalid phone number: ${phoneNumber}`);
+//       return false;
+//    }
+
+//    if (addressHandling(address) == true) {}
+//    else {
+//       alert(`Invalid address: ${address}`);
+//       return false;
+//    }
+
+//    if ((passwordFirst.length > 12 && passwordFirst == passwordSecond) == false) {
+//       alert(`Invalid password length or passwords do not match`);
+//       return false;
+//    }
+
+//    let submit = new submitJSON(name, email, phone, age, passwordFirst);
+//    submit.pushJSON();
+
+//    return true;
+// }
+
+// function submitJSON() {
+//    let email = document.forms["signupForm"]["email"].value;
+//    let name = document.forms["signupForm"]["name"].value;
+//    let phoneNumber = document.forms["signupForm"]["phone"].value;
+//    let password = document.forms["signupForm"]["passwordOriginal"].value;
+//    let address = document.forms["signupForm"]["address"].value;
+//    let age = document.forms["signupForm"]["age"].value;
+
+//    let members = JSON.parse(localStorage.getItem("members")) || [];
+//    members.push({email, name, phoneNumber, age, address, password});
+//    localStorage.setItem("members", JSON.stringify(members));
+//    alert("Member added successfully!");
+//    document.getElementById("signupForm").reset();
+// }
+
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+   e.preventDefault();
+
    let email = document.forms["signupForm"]["email"].value;
    let name = document.forms["signupForm"]["name"].value;
    let phoneNumber = document.forms["signupForm"]["phone"].value;
@@ -118,23 +184,12 @@ function validate() {
       return false;
    }
 
-   let submit = new submitJSON(name, email, phone, age, passwordFirst);
-   submit.pushJSON();
+   var form = new FormData(this);
+   console.log(form);
+   // var response = await fetch('../PHP/memberHandler.php', {
+   //    method: 'POST',
+   //    body: form
+   // });
+   // console.log(response);
 
-   return true;
-}
-
-function submitJSON() {
-   let email = document.forms["signupForm"]["email"].value;
-   let name = document.forms["signupForm"]["name"].value;
-   let phoneNumber = document.forms["signupForm"]["phone"].value;
-   let password = document.forms["signupForm"]["passwordOriginal"].value;
-   let address = document.forms["signupForm"]["address"].value;
-   let age = document.forms["signupForm"]["age"].value;
-
-   let members = JSON.parse(localStorage.getItem("members")) || [];
-   members.push({email, name, phoneNumber, age, address, password});
-   localStorage.setItem("members", JSON.stringify(members));
-   alert("Member added successfully!");
-   document.getElementById("signupForm").reset();
-}
+});
