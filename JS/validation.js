@@ -272,12 +272,12 @@ $("#update").on("click", function(event) {
       return false;
    }
 
-   submitPUSH();
+   updatePUSH();
    return true;
 })
 
 
-function submitPUSH() {
+function updatePUSH() {
     let oldEmail = document.forms["signupForm"]["oldEmail"].value;
     let email = document.forms["signupForm"]["email"].value;
     let name = document.forms["signupForm"]["name"].value;
@@ -301,6 +301,7 @@ function submitPUSH() {
       success: function(response) {
          if (response.success == true) {
             alert("Member updated successfully!");
+            location.reload();
          }
          else {
             alert("An error occurred, please try again later.");

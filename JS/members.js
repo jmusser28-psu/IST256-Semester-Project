@@ -89,7 +89,7 @@ function writeMembers(response) {
     members.forEach(member => {
         const row = `
             <tr>
-                <td>${member.email}</td>
+                <td>${member.email} <button class="button" id="deleteMember" value=${member.email}>Delete Member</button></td>
                 <td>${member.name}</td>
                 <td>${member.phone}</td>
                 <td>${member.age}</td>
@@ -101,3 +101,27 @@ function writeMembers(response) {
         table.innerHTML += row;
     });
 }
+
+$(document).on("click", "#deleteMember", function() {
+    let email = $(this).val();
+    $.ajax({
+      type: "POST",
+      url: "/PHP/memberDelete.php",
+      data: {
+        email: email
+      },
+      success: function(response) {
+         if (response.success == true) {
+            writeMembers(response);
+            alert("Successfully deleted member");
+            location.reload();
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+   })
+})
