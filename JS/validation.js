@@ -74,6 +74,7 @@ function phoneHandling(phoneNumber) {
 
    return true;
 }
+// Legacy JSON Code, here for documentation purposes.
 
 // function validate() {
 //    let email = document.forms["signupForm"]["email"].value;
@@ -124,24 +125,23 @@ function phoneHandling(phoneNumber) {
 //    return true;
 // }
 
-// function submitJSON() {
-//    let email = document.forms["signupForm"]["email"].value;
-//    let name = document.forms["signupForm"]["name"].value;
-//    let phoneNumber = document.forms["signupForm"]["phone"].value;
-//    let password = document.forms["signupForm"]["passwordOriginal"].value;
-//    let address = document.forms["signupForm"]["address"].value;
-//    let age = document.forms["signupForm"]["age"].value;
+function submitJSON() {
+   let email = document.forms["signupForm"]["email"].value;
+   let name = document.forms["signupForm"]["name"].value;
+   let phoneNumber = document.forms["signupForm"]["phone"].value;
+   let password = document.forms["signupForm"]["passwordOriginal"].value;
+   let address = document.forms["signupForm"]["address"].value;
+   let age = document.forms["signupForm"]["age"].value;
 
-//    let members = JSON.parse(localStorage.getItem("members")) || [];
-//    members.push({email, name, phoneNumber, age, address, password});
-//    localStorage.setItem("members", JSON.stringify(members));
-//    alert("Member added successfully!");
-//    document.getElementById("signupForm").reset();
-// }
+   let members = JSON.parse(localStorage.getItem("members")) || [];
+   members.push({email, name, phoneNumber, age, address, password});
+   localStorage.setItem("members", JSON.stringify(members));
+   alert("Member added successfully!");
+   document.getElementById("signupForm").reset();
+}
 
-document.getElementById('signupForm').addEventListener('submit', async function(e) {
-   e.preventDefault();
-
+document.getElementById("signupForm").addEventListener('submit', function(event) {
+   event.preventDefault();
    let email = document.forms["signupForm"]["email"].value;
    let name = document.forms["signupForm"]["name"].value;
    let phoneNumber = document.forms["signupForm"]["phone"].value;
@@ -184,12 +184,130 @@ document.getElementById('signupForm').addEventListener('submit', async function(
       return false;
    }
 
-   var form = new FormData(this);
-   console.log(form);
-   // var response = await fetch('../PHP/memberHandler.php', {
-   //    method: 'POST',
-   //    body: form
-   // });
-   // console.log(response);
+   submitPUSH();
+   return true;
+})
 
-});
+function submitPUSH() {
+   let email = document.forms["signupForm"]["email"].value;
+   let name = document.forms["signupForm"]["name"].value;
+   let phoneNumber = document.forms["signupForm"]["phone"].value;
+   let password = document.forms["signupForm"]["passwordOriginal"].value;
+   let address = document.forms["signupForm"]["address"].value;
+   let age = document.forms["signupForm"]["age"].value;
+
+   $.ajax({
+      type: "POST",
+      url: "/PHP/memberAdd.php",
+      data: {
+         email: email,
+         name: name,
+         phone: phoneNumber,
+         password: password,
+         address: address,
+         age: age
+      },
+      success: function(response) {
+         if (response.success == true) {
+            alert("Member added successfully!");
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+   })
+}
+
+$("#update").on("click", function(event) {
+   event.preventDefault();
+   let oldEmail = document.forms["signupForm"]["oldEmail"].value;
+   let email = document.forms["signupForm"]["email"].value;
+   let name = document.forms["signupForm"]["name"].value;
+   let phoneNumber = document.forms["signupForm"]["phone"].value;
+   let passwordFirst = document.forms["signupForm"]["passwordOriginal"].value;
+   let passwordSecond = document.forms["signupForm"]["passwordConfirm"].value;
+   let address = document.forms["signupForm"]["address"].value;
+
+   if (nameHandling(name) == true) {}
+   else {
+      alert(`Invalid name: ${name}`);
+      return false;
+   }
+
+   if (addressHandling(address) == true) {}
+   else {
+      alert(`Invalid address: ${address}`);
+      return false;
+   }
+
+   if (emailHandling(oldEmail) == true) {}
+   else {
+      alert(`Invalid email: ${email}`);
+      return false;
+   }
+   
+   if (emailHandling(email) == true) {}
+   else {
+      alert(`Invalid email: ${email}`);
+      return false;
+   }
+
+   if (phoneHandling(phoneNumber) == true) {}
+   else {
+      alert(`Invalid phone number: ${phoneNumber}`);
+      return false;
+   }
+
+   if (addressHandling(address) == true) {}
+   else {
+      alert(`Invalid address: ${address}`);
+      return false;
+   }
+
+   if ((passwordFirst.length > 12 && passwordFirst == passwordSecond) == false) {
+      alert(`Invalid password length or passwords do not match`);
+      return false;
+   }
+
+   submitPUSH();
+   return true;
+})
+
+
+function submitPUSH() {
+    let oldEmail = document.forms["signupForm"]["oldEmail"].value;
+    let email = document.forms["signupForm"]["email"].value;
+    let name = document.forms["signupForm"]["name"].value;
+    let phoneNumber = document.forms["signupForm"]["phone"].value;
+    let password = document.forms["signupForm"]["passwordOriginal"].value;
+    let address = document.forms["signupForm"]["address"].value;
+    let age = document.forms["signupForm"]["age"].value;
+
+    $.ajax({
+      type: "POST",
+      url: "/PHP/memberUpdate.php",
+      data: {
+         oldEmail: oldEmail,
+         email: email,
+         name: name,
+         phone: phoneNumber,
+         password: password,
+         address: address,
+         age: age
+      },
+      success: function(response) {
+         if (response.success == true) {
+            alert("Member updated successfully!");
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+   })
+}
