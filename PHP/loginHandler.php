@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $db = new SQLite3('./SQLite3/account/accountHandler.db');
 
-        $stmt = $db->prepare('SELECT email, password FROM account WHERE email = ?');
+        $stmt = $db->prepare('SELECT email, password, address FROM account WHERE email = ?');
         $stmt->bindValue(1, $_POST['email']);
         
         $result = $stmt->execute();

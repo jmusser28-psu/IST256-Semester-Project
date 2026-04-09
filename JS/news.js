@@ -65,117 +65,119 @@
 //     });
 // }
 
-$("#100").on("click", function() {
-    $("#100").attr("disabled", true);
-    $("#100").html("Like: 1");
-    $("#101").attr("disabled", true);
-})
 
-$("#101").on("click", function() {
-    $("#100").attr("disabled", true);
-    $("#101").attr("disabled", true);
-    $("#101").html("Dislike: 1");
-})
+// Legacy hardcoded functionality for button likes and dislikes
+// $("#100").on("click", function() {
+//     $("#100").attr("disabled", true);
+//     $("#100").html("Like: 1");
+//     $("#101").attr("disabled", true);
+// })
 
-$("#110").on("click", function() {
-    $("#110").attr("disabled", true);
-    $("#110").html("Like: 1");
-    $("#111").attr("disabled", true);
-})
+// $("#101").on("click", function() {
+//     $("#100").attr("disabled", true);
+//     $("#101").attr("disabled", true);
+//     $("#101").html("Dislike: 1");
+// })
 
-$("#111").on("click", function() {
-    $("#110").attr("disabled", true);
-    $("#111").attr("disabled", true);
-    $("#111").html("Dislike: 1");
-})
+// $("#110").on("click", function() {
+//     $("#110").attr("disabled", true);
+//     $("#110").html("Like: 1");
+//     $("#111").attr("disabled", true);
+// })
 
-$("#120").on("click", function() {
-    $("#120").attr("disabled", true);
-    $("#120").html("Like: 1");
-    $("#121").attr("disabled", true);
-})
+// $("#111").on("click", function() {
+//     $("#110").attr("disabled", true);
+//     $("#111").attr("disabled", true);
+//     $("#111").html("Dislike: 1");
+// })
 
-$("#121").on("click", function() {
-    $("#120").attr("disabled", true);
-    $("#121").attr("disabled", true);
-    $("#121").html("Dislike: 1");
-})
+// $("#120").on("click", function() {
+//     $("#120").attr("disabled", true);
+//     $("#120").html("Like: 1");
+//     $("#121").attr("disabled", true);
+// })
 
-
-
-$("#200").on("click", function() {
-    $("#200").attr("disabled", true);
-    $("#200").html("Like: 1");
-    $("#201").attr("disabled", true);
-})
-
-$("#201").on("click", function() {
-    $("#200").attr("disabled", true);
-    $("#201").attr("disabled", true);
-    $("#201").html("Dislike: 1");
-})
-
-$("#210").on("click", function() {
-    $("#210").attr("disabled", true);
-    $("#210").html("Like: 1");
-    $("#211").attr("disabled", true);
-})
-
-$("#211").on("click", function() {
-    $("#210").attr("disabled", true);
-    $("#211").attr("disabled", true);
-    $("#211").html("Dislike: 1");
-})
-
-$("#220").on("click", function() {
-    $("#220").attr("disabled", true);
-    $("#220").html("Like: 1");
-    $("#221").attr("disabled", true);
-})
-
-$("#221").on("click", function() {
-    $("#220").attr("disabled", true);
-    $("#221").attr("disabled", true);
-    $("#221").html("Dislike: 1");
-})
+// $("#121").on("click", function() {
+//     $("#120").attr("disabled", true);
+//     $("#121").attr("disabled", true);
+//     $("#121").html("Dislike: 1");
+// })
 
 
 
-$("#300").on("click", function() {
-    $("#300").attr("disabled", true);
-    $("#300").html("Like: 1");
-    $("#301").attr("disabled", true);
-})
+// $("#200").on("click", function() {
+//     $("#200").attr("disabled", true);
+//     $("#200").html("Like: 1");
+//     $("#201").attr("disabled", true);
+// })
 
-$("#301").on("click", function() {
-    $("#300").attr("disabled", true);
-    $("#301").attr("disabled", true);
-    $("#301").html("Dislike: 1");
-})
+// $("#201").on("click", function() {
+//     $("#200").attr("disabled", true);
+//     $("#201").attr("disabled", true);
+//     $("#201").html("Dislike: 1");
+// })
 
-$("#310").on("click", function() {
-    $("#310").attr("disabled", true);
-    $("#310").html("Like: 1");
-    $("#311").attr("disabled", true);
-})
+// $("#210").on("click", function() {
+//     $("#210").attr("disabled", true);
+//     $("#210").html("Like: 1");
+//     $("#211").attr("disabled", true);
+// })
 
-$("#311").on("click", function() {
-    $("#310").attr("disabled", true);
-    $("#311").attr("disabled", true);
-    $("#311").html("Dislike: 1");
-})
+// $("#211").on("click", function() {
+//     $("#210").attr("disabled", true);
+//     $("#211").attr("disabled", true);
+//     $("#211").html("Dislike: 1");
+// })
 
-$("#320").on("click", function() {
-    $("#320").attr("disabled", true);
-    $("#320").html("Like: 1");
-    $("#321").attr("disabled", true);
-})
+// $("#220").on("click", function() {
+//     $("#220").attr("disabled", true);
+//     $("#220").html("Like: 1");
+//     $("#221").attr("disabled", true);
+// })
 
-$("#321").on("click", function() {
-    $("#320").attr("disabled", true);
-    $("#321").attr("disabled", true);
-    $("#321").html("Dislike: 1");
-})
+// $("#221").on("click", function() {
+//     $("#220").attr("disabled", true);
+//     $("#221").attr("disabled", true);
+//     $("#221").html("Dislike: 1");
+// })
+
+
+
+// $("#300").on("click", function() {
+//     $("#300").attr("disabled", true);
+//     $("#300").html("Like: 1");
+//     $("#301").attr("disabled", true);
+// })
+
+// $("#301").on("click", function() {
+//     $("#300").attr("disabled", true);
+//     $("#301").attr("disabled", true);
+//     $("#301").html("Dislike: 1");
+// })
+
+// $("#310").on("click", function() {
+//     $("#310").attr("disabled", true);
+//     $("#310").html("Like: 1");
+//     $("#311").attr("disabled", true);
+// })
+
+// $("#311").on("click", function() {
+//     $("#310").attr("disabled", true);
+//     $("#311").attr("disabled", true);
+//     $("#311").html("Dislike: 1");
+// })
+
+// $("#320").on("click", function() {
+//     $("#320").attr("disabled", true);
+//     $("#320").html("Like: 1");
+//     $("#321").attr("disabled", true);
+// })
+
+// $("#321").on("click", function() {
+//     $("#320").attr("disabled", true);
+//     $("#321").attr("disabled", true);
+//     $("#321").html("Dislike: 1");
+// })
 
 // let articleIDCart = [];
 // let articleCostCart = [];
@@ -320,6 +322,8 @@ $("#321").on("click", function() {
 let articleIDCart = [];
 let articleCostCart = [];
 let subscribed = false;
+let userEmail = JSON.parse(localStorage.getItem('user'));
+let userAddress = JSON.parse(localStorage.getItem('address'));
 
 $(document).on("click", ".cartButtonAddPress", function() {
     let id = $(this).attr('id');
@@ -421,7 +425,13 @@ $(document).on("click", "#checkoutBtn", function() {
     $("#creditBox").html(htmlString);
 
     htmlString = "";
-    textAreaBox = `<input type="text" id="billingInfo" placeholder="1234 rainbow rd."></input>`
+    if (userAddress === null) {
+        textAreaBox = `<input type="text" id="billingInfo" placeholder="1234 rainbow rd."></input>`
+    }
+    else {
+        textAreaBox = `<input type="text" id="billingInfo" value="${userAddress}"></input>`
+    }
+    
     htmlString = htmlString + `Enter Billing Address: ${textAreaBox}`;
     $("#billingBox").html(htmlString);
 
@@ -431,7 +441,12 @@ $(document).on("click", "#checkoutBtn", function() {
     $("#zipBox").html(htmlString);
 
     htmlString = "";
-    textAreaBox = `<input type="text" id="emailInfo" placeholder="example@example.com"></input>`
+    if (userEmail === null) {
+        textAreaBox = `<input type="text" id="emailInfo" placeholder="example@example.com"></input>`
+    }
+    else {
+        textAreaBox = `<input type="text" id="emailInfo" value="${userEmail}"></input>`
+    }
     htmlString = htmlString + `Enter Email Address: ${textAreaBox}`;
     $("#emailBox").html(htmlString);
     
@@ -574,3 +589,181 @@ function emailHandling(email) {
 
    return true;
 }
+
+$(document).ready(function() {
+    getDynamicArticleElements();
+})
+
+function getDynamicArticleElements() {
+    $.ajax({
+        type: "POST",
+        url: "/PHP/articleSelect.php",
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            for (let i = 0; i < response.article.length; i++) {
+                let jQueryId = '#' + response.article[i].id;
+                $(jQueryId).html('Likes: ' + response.article[i].likes)
+                $(jQueryId).attr('value', parseInt(response.article[i].likes));
+
+                jQueryId = parseInt(response.article[i].id) + parseInt(1);
+                jQueryId = '#' + jQueryId;
+                $(jQueryId).html('Dislikes: ' + response.article[i].dislikes)
+                $(jQueryId).attr('value', parseInt(response.article[i].dislikes));
+            }
+            alert("Successfully obtained members");
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}
+
+$('.like').on('click', function() {
+    if ($(this).hasClass('pressed') == true) {
+        
+        $(this).removeClass('pressed');
+
+        let likes = parseInt($(this).val()) - 1;
+
+        let articleID = $(this).attr('id');
+        let dislikeButtonID = parseInt(articleID) + parseInt(1);
+
+        let jQueryId = '#' + dislikeButtonID;
+        let dislikes = $(jQueryId).val();
+        $(jQueryId).attr('disabled', false);
+
+        $.ajax({
+        type: "POST",
+        url: "/PHP/articleUpdate.php",
+        data: {
+            like: likes,
+            dislike: dislikes,
+            id: articleID,
+        },
+        success: function(response) {
+            if (response.success == true) {
+                alert("Likes updated successfully!");
+                getDynamicArticleElements();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
+        }
+        })
+    }
+
+    else {
+        $(this).addClass('pressed');
+
+        let likes = parseInt($(this).val()) + parseInt(1.0);
+
+        let articleID = $(this).attr('id');
+        let dislikeButtonID = parseInt(articleID) + parseInt(1);
+
+        let jQueryId = '#' + dislikeButtonID;
+        let dislikes = $(jQueryId).val();
+        $(jQueryId).attr('disabled', true);
+
+        $.ajax({
+        type: "POST",
+        url: "/PHP/articleUpdate.php",
+        data: {
+            like: likes,
+            dislike: dislikes,
+            id: articleID,
+        },
+        success: function(response) {
+            if (response.success == true) {
+                alert("Likes updated successfully!");
+                getDynamicArticleElements();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
+        }
+        })
+    }
+})
+
+$('.dislike').on('click', function() {
+    if ($(this).hasClass('pressed') == true) {
+        
+        $(this).removeClass('pressed');
+
+        let dislikes = parseInt($(this).val() - 1);
+
+        let articleID = parseInt($(this).attr('id')) - 1;
+
+        let jQueryId = '#' + articleID;
+        let likes = $(jQueryId).val();
+        $(jQueryId).attr('disabled', false);
+
+        $.ajax({
+        type: "POST",
+        url: "/PHP/articleUpdate.php",
+        data: {
+            like: likes,
+            dislike: dislikes,
+            id: articleID,
+        },
+        success: function(response) {
+            if (response.success == true) {
+                alert("Likes updated successfully!");
+                getDynamicArticleElements();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
+        }
+        })
+    }
+
+    else {
+        
+        $(this).addClass('pressed');
+
+        let dislikes = parseInt($(this).val() + 1);
+
+        let articleID = parseInt($(this).attr('id')) - 1;
+
+        let jQueryId = '#' + articleID;
+        let likes = $(jQueryId).val();
+        $(jQueryId).attr('disabled', true);
+
+        $.ajax({
+        type: "POST",
+        url: "/PHP/articleUpdate.php",
+        data: {
+            like: likes,
+            dislike: dislikes,
+            id: articleID,
+        },
+        success: function(response) {
+            if (response.success == true) {
+                alert("Dislikes updated successfully!");
+                getDynamicArticleElements();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
+        }
+        })
+    }
+})

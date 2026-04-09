@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let user = JSON.parse(localStorage.getItem('user'));
+    let address = JSON.parse(localStorage.getItem('address'));
 
     if (user === null) {
         $(".notLoggedIn").attr("hidden", true);
@@ -18,6 +19,7 @@ $(document).ready(function() {
 $(document).on("change", ".signoutClass", function(event) {
     event.preventDefault();
     localStorage.clear("user");
+    localStorage.clear("address");
     alert("Successfully signed out");
     location.reload();
 })
