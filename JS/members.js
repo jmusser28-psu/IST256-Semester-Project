@@ -89,7 +89,7 @@ function writeMembers(response) {
     members.forEach(member => {
         const row = `
             <tr>
-                <td>${member.email} <button class="button" id="deleteMember" value=${member.email}>Delete Member</button></td>
+                <td>${member.email} <button class="button btn btn-dark" id="deleteMember" value=${member.email}>Delete Member</button></td>
                 <td>${member.name}</td>
                 <td>${member.phone}</td>
                 <td>${member.age}</td>

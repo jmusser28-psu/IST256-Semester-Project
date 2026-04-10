@@ -44,8 +44,7 @@ $(document).on('click', '.refund', function() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Success");
-            localStorage.removeItem("subscription");
+            alert("Successfully refunded!");
             location.reload();
          }
          else {

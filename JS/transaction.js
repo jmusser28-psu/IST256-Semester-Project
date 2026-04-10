@@ -102,7 +102,7 @@ $(document).on("click", "#transactionCheckout", function() {
                 },
                 success: function(response) {
                     if (response.success == true) {
-                        alert("Element added successfully!");
+                        alert("Purchase Successful!");
                     }
                     else {
                         alert("An error occurred, please try again later.");
@@ -120,6 +120,7 @@ $(document).on("click", "#transactionCheckout", function() {
 
 $(document).on("click", "#transactionCancelBtn", function() {
     removeCart();
+    alert("Transaction Successfully Canceled")
 })
 
 function removeCart() {
@@ -132,7 +133,6 @@ function removeCart() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Transaction Successfully Canceled")
             window.location.replace('/HTML/news.html')
          }
 
@@ -232,8 +232,6 @@ function renderCart() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Successfully obtained items");
-
             let htmlString = "";
             
             for (let i = 0; i < response.product.length; i++) {

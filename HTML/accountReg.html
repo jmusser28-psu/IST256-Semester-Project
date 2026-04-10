@@ -7,58 +7,101 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <form class = "container-fluid" action="/PHP/memberAdd.php" name="signupForm" id="signupForm" method="post">
-        <h1 class="text-center">Sign Up</h1>
-            <div class="container-md rounded text-center">
-                <label for="email">Email:</label>
-                <input class="input_email" type="email" id="email" name="email" placeholder="janedoe@example.com" required>
-                <br>
-            </div>
-            
-            <div class="container-md rounded text-center">
-                <label for="name" class="text-start">First and Last Name:</label>
-                <input class="input_name" type="name" id="name" name="name" placeholder="Jane Doe" required>
-                <br>
-            </div>
-            
-            <div class="container-md rounded text-center">
-                <label for="phone" class="text-start">Phone Number:</label>
-                <input class="input_phone" type="phone" id="phone" name="phone" placeholder="123-456-7890" required>
-                <br>
-            </div>
-            
-            <div class="container-md rounded text-center">
-                <label for="age" class="text-start">Date of Birth:</label>
-                <input class="input_age" type="date" id="age" name="age" required>
-                <br>
-            </div>
+    <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <img src="/images/Group7.ico" width="60" height="60">
+                    <ul class="navbar-nav ms-4 d-flex flex-row gap-4">
+                        <li class="nav-item">
+                            <a href="/index.HTML" class="nav-link text-white"><strong>Home</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/HTML/news.html#Local" class="nav-link text-white"><strong>Local News</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/HTML/news.html#Sports" class="nav-link text-white"><strong>Sports</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/HTML/news.html#Politics" class="nav-link text-white"><strong>Politics</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/HTML/dailyArticle.html" class="nav-link text-white" id="dailyArticle" hidden><strong>Daily Subscriber Article</strong></a>
+                        </li>
+                    </ul>
 
-            <div class="container-md rounded text-center">
-                <label for="address" class="text-start">Address:</label>
-                <input class="input_address" type="address" id="address" name="address" placeholder="1234 rainbow rd." required>
-                <br>
-            </div>
+                    <select class="form-select w-auto ms-auto"
+                            onchange="window.location.href=this.value" id="management">
+                        <option selected disabled>Account</option>
+                        <option value="/HTML/accountReg.html">Registration</option>
+                        <option value="/HTML/login.html">Login</option>
+                        <option value="/HTML/members.html">Members</option>
+                    </select>
 
-            <div class="container-md rounded text-center">
-                <label for="password" class="text-start">Password:</label>
-                <input class="input_pass" type="password" id="passwordOriginal" name="password" placeholder="Password" required>
-                <br>
-            </div>
-            
-            <div class="container-md rounded text-center">
-                <label for="passwordConfirm" class="text-start">Retype Password:</label>
-                <input class="pass_confirm" type="password" id="passwordConfirm" name="password" placeholder="Password" required>
-            </div>
+                    <button type="button" id="2" value ="20" class="cartButtonAddPress btn btn-light notLoggedIn">Subscribe</button>
+                    <button type="button" id="1" class="btn btn-light" hidden>Unsubscribe</button>
+                </div>
+            </nav>
+        </header>
 
-        <div class="container-md rounded text-center">
-            <input type="submit" value="Sign Up" class="rounded">
-            <small><p>Already have an account? <a href="/HTML/login.html">Log in.</a></p></small>
+        <div class="card">
+            <form class = "container-fluid" action="/PHP/memberAdd.php" name="signupForm" id="signupForm" method="post">
+                <h1 class="text-center">Sign Up</h1>
+                    <div class="container-md rounded text-center">
+                        <label for="email">Email:</label>
+                        <input class="input_email" type="email" id="email" name="email" placeholder="janedoe@example.com" required>
+                        <br>
+                    </div>
+                    
+                    <div class="container-md rounded text-center">
+                        <label for="name" class="text-start">First and Last Name:</label>
+                        <input class="input_name" type="name" id="name" name="name" placeholder="Jane Doe" required>
+                        <br>
+                    </div>
+                    
+                    <div class="container-md rounded text-center">
+                        <label for="phone" class="text-start">Phone Number:</label>
+                        <input class="input_phone" type="phone" id="phone" name="phone" placeholder="123-456-7890" required>
+                        <br>
+                    </div>
+                    
+                    <div class="container-md rounded text-center">
+                        <label for="age" class="text-start">Date of Birth:</label>
+                        <input class="input_age" type="date" id="age" name="age" required>
+                        <br>
+                    </div>
+
+                    <div class="container-md rounded text-center">
+                        <label for="address" class="text-start">Address:</label>
+                        <input class="input_address" type="address" id="address" name="address" placeholder="1234 rainbow rd." required>
+                        <br>
+                    </div>
+
+                    <div class="container-md rounded text-center">
+                        <label for="password" class="text-start">Password:</label>
+                        <input class="input_pass" type="password" id="passwordOriginal" name="password" placeholder="Password" required>
+                        <br>
+                    </div>
+                    
+                    <div class="container-md rounded text-center">
+                        <label for="passwordConfirm" class="text-start">Retype Password:</label>
+                        <input class="pass_confirm" type="password" id="passwordConfirm" name="password" placeholder="Password" required>
+                    </div>
+
+                <div class="container-md rounded text-center">
+                    <input type="submit" value="Sign Up" class="rounded">
+                    <small><p>Already have an account? <a href="/HTML/login.html">Log in.</a></p></small>
+                </div>
+                <hr class="custom-hr">
+                <div>
+                    <p>By signing up or signing in, you agree to our Terms of Use and acknowledge that you have read our Privacy Policy. Group 7 News may use your email address to send news updates, promotional messages, and special offers. You may opt out at any time through your account settings or our Privacy Policy.</p>
+                </div>
+            </form>
         </div>
-        <hr class="custom-hr">
-        <div>
-            <p>By signing up or signing in, you agree to our Terms of Use and acknowledge that you have read our Privacy Policy. Group 7 News may use your email address to send news updates, promotional messages, and special offers. You may opt out at any time through your account settings or our Privacy Policy.</p>
-        </div>
-    </form>
+
+    <footer class="bg-primary text-white text-center py-3 fixed-bottom">
+        <p class="mb-0"><em>Delivering the truth effectively and efficiently</em></p>
+    </footer>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/JS/validation.js"></script>
 </body>

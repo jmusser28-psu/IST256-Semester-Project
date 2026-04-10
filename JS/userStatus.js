@@ -42,13 +42,12 @@ function getSubscription() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Subscribed");
             localStorage.setItem("subscription", JSON.stringify(response.success));
             $("#2").attr("hidden", true)
             $("#1").attr("hidden", false)
+            $(".subscriber").attr("hidden", true)
          }
          else {
-            alert("Not subscribed");
             localStorage.removeItem('subscription');
          }
       },
@@ -68,7 +67,7 @@ $(document).on("click", "#1", function() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Success");
+            alert("Successfully Unsubscribed!");
             localStorage.removeItem("subscription");
             location.reload();
          }

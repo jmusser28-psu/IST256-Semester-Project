@@ -366,7 +366,6 @@ $(document).on("click", ".cartButtonAddPress", function() {
         },
         success: function(response) {
             if (response.success == true) {
-                alert("Element added successfully!");
                 renderCart();
             }
             else {
@@ -392,13 +391,11 @@ function renderCart() {
         dataType: "json",
         success: function(response) {
          if (response.success == true) {
-            alert("Successfully obtained items");
-
             let htmlString = "";
             
             for (let i = 0; i < response.product.length; i++) {
                 let buttonID = `${response.product[i].productID}btn`;
-                let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn">Remove from Cart</button>`;
+                let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn btn btn-dark">Remove from Cart</button>`;
                 if (response.product[i].productID != 0) {
                     htmlString = htmlString + `Article ID: ${response.product[i].productID}, Price: \$${response.product[i].cost} ${button}<br>`;
                 }
@@ -527,7 +524,7 @@ function getCost() {
 
             let htmlString = "";
             let buttonID = `checkoutBtn`;
-            let button = `<button id=${buttonID}>\$${cost}</button>`;
+            let button = `<button id=${buttonID} class="btn btn-dark">\$${cost}</button>`;
             htmlString = `Proceed to Checkout: ${button}`
             $("#checkoutProceed").addClass("text-center")
             $("#checkoutProceed").html(htmlString);
@@ -765,7 +762,6 @@ function getDynamicArticleElements() {
                 $(jQueryId).html('Dislikes: ' + response.article[i].dislikes)
                 $(jQueryId).attr('value', parseInt(response.article[i].dislikes));
             }
-            alert("Successfully obtained members");
          }
          else {
             alert("An error occurred, please try again later.");
@@ -801,7 +797,6 @@ $('.like').on('click', function() {
         },
         success: function(response) {
             if (response.success == true) {
-                alert("Likes updated successfully!");
                 getDynamicArticleElements();
             }
             else {
@@ -836,7 +831,6 @@ $('.like').on('click', function() {
         },
         success: function(response) {
             if (response.success == true) {
-                alert("Likes updated successfully!");
                 getDynamicArticleElements();
             }
             else {
@@ -873,7 +867,6 @@ $('.dislike').on('click', function() {
         },
         success: function(response) {
             if (response.success == true) {
-                alert("Likes updated successfully!");
                 getDynamicArticleElements();
             }
             else {
@@ -908,7 +901,6 @@ $('.dislike').on('click', function() {
         },
         success: function(response) {
             if (response.success == true) {
-                alert("Dislikes updated successfully!");
                 getDynamicArticleElements();
             }
             else {

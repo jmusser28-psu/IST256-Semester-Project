@@ -4,12 +4,12 @@ html {
     color: black;
     font-size: 16px;
 }
-.container-fluid {
+/* .container-fluid {
     max-width: 560px;
     max-height: 780px;
     border-radius: 8px;
     padding-top: 30px;
-}
+} */
 .custom-hr {
     width: 60%;
     margin: 15px auto;
@@ -44,7 +44,7 @@ p {
     margin-bottom: 12px;
     width: 67%;
 }
-form {
+/* form {
     background-color: white;
     position: absolute;
     top: 50%;
@@ -52,7 +52,7 @@ form {
     transform: translate(-50%,-50%);
     font-size: 16px;
     width: 150px;
-}
+} */
 .container-fluid h1 , h2, h3, header, div{
     text-align: center;
     text-justify: top;
