@@ -399,7 +399,7 @@ function renderCart() {
             for (let i = 0; i < response.product.length; i++) {
                 let buttonID = `${response.product[i].productID}btn`;
                 let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn">Remove from Cart</button>`;
-                if (response.product[i].productID != 2) {
+                if (response.product[i].productID != 0) {
                     htmlString = htmlString + `Article ID: ${response.product[i].productID}, Price: \$${response.product[i].cost} ${button}<br>`;
                 }
                 else {
@@ -937,6 +937,31 @@ function preventDuplicate() {
                     $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
                 }
                 renderCart(response);
+            }
+         }
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+
+    $.ajax({
+        type: "POST",
+        url: "/PHP/transactionSelect.php",
+        data: {
+            email: userEmail,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            if (response.product.length != 0) {
+                for (let i = 0; i < response.product.length; i++) {
+                    $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
+                }
             }
          }
 

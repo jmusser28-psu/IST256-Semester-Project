@@ -88,20 +88,41 @@ $(document).on("click", "#transactionCheckout", function() {
     }
 
     if (creditValid && billingValid && zipValid && emailValid) {
-        for (let i = 0; i < articleIDCart.length; i++) {
-            console.log(articleIDCart);
-            if (articleIDCart[i] == 2) {
-                subscribed = true;
-                $("#2").attr("hidden", true)
-                $("#1").attr("hidden", false)
-                $("#dailyArticle").attr("hidden", false);
-                $(".subscriber").attr("hidden", true);
-            }
+        for (let i = 0; i < products.length; i++) {
+            $.ajax({
+                type: "POST",
+                url: "/PHP/transactionAdd.php",
+                data: {
+                    email: userEmail,
+                    productID: products[i].productID,
+                    cost: products[i].cost,
+                    creditNumber: creditNumber,
+                    billingAddress: billingAddress,
+                    zip: zip,
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        alert("Element added successfully!");
+                    }
+                    else {
+                        alert("An error occurred, please try again later.");
+                    }
+                },
+                error: function() {
+                    alert("A fatal error occurred, please try again later.");
+                }
+            })
         }
+        removeCart();
+        window.location.replace('/index.html');
     }
 })
 
 $(document).on("click", "#transactionCancelBtn", function() {
+    removeCart();
+})
+
+function removeCart() {
     $.ajax({
         type: "POST",
         url: "/PHP/transactionCancel.php",
@@ -124,24 +145,7 @@ $(document).on("click", "#transactionCancelBtn", function() {
          alert("A fatal error occurred, please try again later.");
       }
     })
-})
-
-
-// Important
-// $(document).on("click", "#1", function() {
-//     $("#unsubscribeContainer").attr("hidden", false)
-// })
-
-// $(document).on("click", "#unsubscribeButton", function() {
-//     $("#1").attr("hidden", true);
-//     $("#2").attr("hidden", false);
-//     subscribed = false;
-//     $("#unsubscribeContainer").attr("hidden", true);
-//     $("#dailyArticle").attr("hidden", true);
-//     $(".subscriber").attr("hidden", false);
-//     alert("You have successfully unsubscribed!");
-    
-// })
+}
 
 
 function addressHandling(address) {

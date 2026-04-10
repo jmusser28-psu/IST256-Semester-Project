@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <title>Group 7</title>
+    <link rel="icon" type="images/x-ico" href="/images/Group7.ico">
+    <link href="/JSON/articleInfo.json">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .padding {
+            padding-bottom: 100px;
+        }
+        button {
+            margin-bottom: 20px;
+            margin-right: 5px;
+        }
+    </style>
+    </head>
+     
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <img src="/images/Group7.ico" width="60" height="60">
+                    <ul class="navbar-nav ms-4 d-flex flex-row gap-4">
+                        <li class="nav-item">
+                            <a href="/index.HTML" class="nav-link text-white"><strong>Home</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Local" class="nav-link text-white"><strong>Local News</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Sports" class="nav-link text-white"><strong>Sports</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Politics" class="nav-link text-white"><strong>Politics</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/HTML/dailyArticle.html" class="nav-link text-white" id="dailyArticle" hidden><strong>Daily Subscriber Article</strong></a>
+                        </li>
+                    </ul>
+
+                    <select class="form-select w-auto ms-auto"
+                            onchange="window.location.href=this.value" id="management">
+                        <option selected disabled>Account</option>
+                        <option value="/HTML/accountReg.html">Registration</option>
+                        <option value="/HTML/login.html">Login</option>
+                    </select>
+
+                    <button type="button" id="2" value ="20" class="cartButtonAddPress btn btn-light notLoggedIn">Subscribe</button>
+                    <button type="button" id="1" class="btn btn-light" hidden>Unsubscribe</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="purchasedItems">
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+        <script src="/JS/news.js"></script>
+    </body>
+
+    <footer class="bg-primary text-white text-center py-3 fixed-bottom">
+        <p class="mb-0"><em>Delivering the truth effectively and efficiently</em></p>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+<script src="/JS/purchases.js"></script>
+<script src="/JS/userStatus.js"></script>
+</html>
