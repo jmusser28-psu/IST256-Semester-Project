@@ -318,10 +318,35 @@
 //     getCost();
 // })
 
+// Old variables
+// let articleIDCart = [];
+// let articleCostCart = [];
+// let subscribed = false;
 
-let articleIDCart = [];
-let articleCostCart = [];
-let subscribed = false;
+// Old add to cart functionality.
+// $(document).on("click", ".cartButtonAddPress", function() {
+//     let id = $(this).attr('id');
+//     id = "#" + id;
+
+//     $(id).attr("disabled", true);
+//     articleIDCart.unshift($(this).attr('id'));
+//     articleCostCart.unshift($(this).val());
+//     $("#checkoutContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         if (articleIDCart[i] != 2) {
+//             htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//         }
+//         else {
+//             htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
+//         }
+//     }
+//     $("#checkoutList").html(htmlString);
+//     getCost();
+// })
+
 let userEmail = JSON.parse(localStorage.getItem('user'));
 let userAddress = JSON.parse(localStorage.getItem('address'));
 
@@ -330,268 +355,397 @@ $(document).on("click", ".cartButtonAddPress", function() {
     id = "#" + id;
 
     $(id).attr("disabled", true);
-    articleIDCart.unshift($(this).attr('id'));
-    articleCostCart.unshift($(this).val());
-    $("#checkoutContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        if (articleIDCart[i] != 2) {
-            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+    
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartAdd.php",
+        data: {
+            email: userEmail,
+            productID: $(this).attr('id') - parseInt(2),
+            cost: $(this).val(),
+        },
+        success: function(response) {
+            if (response.success == true) {
+                alert("Element added successfully!");
+                renderCart();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
         }
-        else {
-            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
-        }
-    }
-    $("#checkoutList").html(htmlString);
-    getCost();
+    })
+
 })
 
-$(document).on("click", ".buttonPress", function() {
+function renderCart() {
+    $("#checkoutContainer").attr("hidden", false);
+
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartSelect.php",
+        data: {
+            email: userEmail,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            alert("Successfully obtained items");
+
+            let htmlString = "";
+            
+            for (let i = 0; i < response.product.length; i++) {
+                let buttonID = `${response.product[i].productID}btn`;
+                let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn">Remove from Cart</button>`;
+                if (response.product[i].productID != 2) {
+                    htmlString = htmlString + `Article ID: ${response.product[i].productID}, Price: \$${response.product[i].cost} ${button}<br>`;
+                }
+                else {
+                    htmlString = htmlString + `Subscription, Price: \$${response.product[i].cost} ${button}<br>`;
+                }
+            }
+            $("#checkoutList").html(htmlString);
+
+            getCost();
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}
+
+// Old Functionality for removing from cart.
+// $(document).on("click", ".buttonPress", function() {
+//     let id = $(this).val();
+
+//     let indexFound = 0;
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         if (articleIDCart[i] == $(this).val()) {
+//             indexFound = i;
+//         }
+//     }
+
+//     articleIDCart.splice(indexFound, 1);
+//     articleCostCart.splice(indexFound, 1)
+
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         let buttonID = `${articleIDCart[i]}btn`;
+//         let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
+//         if (articleIDCart[i] != 2) {
+//             htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
+//         }
+//         else {
+//             htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
+//         }
+//     }
+//     if (articleIDCart.length == 0) {
+//         $("#checkoutContainer").attr("hidden", true);
+//     }
+
+//     $(`#${id}`).attr("disabled", false);
+
+//     $("#checkoutList").html(htmlString);
+
+//     getCost();
+// })
+
+$(document).on("click", ".removeBtn", function() {
     let id = $(this).val();
 
-    let indexFound = 0;
-    for (let i = 0; i < articleIDCart.length; i++) {
-        if (articleIDCart[i] == $(this).val()) {
-            indexFound = i;
-        }
-    }
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartDelete.php",
+        data: {
+            email: userEmail,
+            productID: id,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            alert("Successfully removed from cart");
 
-    articleIDCart.splice(indexFound, 1);
-    articleCostCart.splice(indexFound, 1)
+            let jQueryId = '#' + (parseInt(id) + 2.0);
+            $(jQueryId).attr('disabled', false)
+            renderCart();
+            getCost(response);
+         }
 
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        let buttonID = `${articleIDCart[i]}btn`;
-        let button = `<button value=${articleIDCart[i]} id=${buttonID} class="buttonPress">Remove from Cart</button>`;
-        if (articleIDCart[i] != 2) {
-            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]} ${button}<br>`;
-        }
-        else {
-            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]} ${button}<br>`;
-        }
-    }
-    if (articleIDCart.length == 0) {
-        $("#checkoutContainer").attr("hidden", true);
-    }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
 
-    $(`#${id}`).attr("disabled", false);
-
-    $("#checkoutList").html(htmlString);
-
-    getCost();
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
 })
+
+// Old functionality for getting a cost
+// function getCost() {
+//     let cost = 0.0;
+//     for (let i = 0; i < articleCostCart.length; i++) {
+//         cost = cost + Number.parseInt(articleCostCart[i]);
+//     }
+
+//     let stringCost = `<p value="${cost}">Cost: \$${cost}</p>`
+//     $("#cost").html(stringCost);
+//     $("#transactionCost").html(stringCost);
+
+//     let htmlString = "";
+//     let buttonID = `checkoutBtn`;
+//     let button = `<button id=${buttonID}>\$${cost}</button>`;
+//     htmlString = `Proceed to Checkout: ${button}`
+//     $("#checkoutProceed").addClass("text-center")
+//     $("#checkoutProceed").html(htmlString);
+// }
 
 function getCost() {
-    let cost = 0.0;
-    for (let i = 0; i < articleCostCart.length; i++) {
-        cost = cost + Number.parseInt(articleCostCart[i]);
-    }
-
-    let stringCost = `<p value="${cost}">Cost: \$${cost}</p>`
-    $("#cost").html(stringCost);
-    $("#transactionCost").html(stringCost);
-
-    let htmlString = "";
-    let buttonID = `checkoutBtn`;
-    let button = `<button id=${buttonID}>\$${cost}</button>`;
-    htmlString = `Proceed to Checkout: ${button}`
-    $("#checkoutProceed").addClass("text-center")
-    $("#checkoutProceed").html(htmlString);
-}
-
-$(document).on("click", "#checkoutBtn", function() {
-    $("#checkoutContainer").attr("hidden", true);
-    $("#transactionContainer").attr("hidden", false);
-    let htmlString = "";
-    for (let i = 0; i < articleIDCart.length; i++) {
-        if (articleIDCart[i] != 2) {
-            htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]}<br>`;
-        }
-        else {
-            htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]}<br>`;
-        }
-    }
-    $("#itemList").html(htmlString);
-    getCost();
-
-    $(".cartButtonAddPress").attr("disabled", true);
-
-    htmlString = "";
-    let textAreaBox = `<input type="text" id="creditInfo" placeholder="0123-4567-8910-1112"></input>`
-    let button = `<button id="transactionCheckout">Complete Transaction</button>`
-    htmlString = htmlString + `Enter Credit Card Info: ${textAreaBox}`;
-    $("#creditBox").html(htmlString);
-
-    htmlString = "";
-    if (userAddress === null) {
-        textAreaBox = `<input type="text" id="billingInfo" placeholder="1234 rainbow rd."></input>`
-    }
-    else {
-        textAreaBox = `<input type="text" id="billingInfo" value="${userAddress}"></input>`
-    }
-    
-    htmlString = htmlString + `Enter Billing Address: ${textAreaBox}`;
-    $("#billingBox").html(htmlString);
-
-    htmlString = "";
-    textAreaBox = `<input type="text" id="zipInfo" placeholder="16802"></input>`
-    htmlString = htmlString + `Enter Zip Code: ${textAreaBox}`;
-    $("#zipBox").html(htmlString);
-
-    htmlString = "";
-    if (userEmail === null) {
-        textAreaBox = `<input type="text" id="emailInfo" placeholder="example@example.com"></input>`
-    }
-    else {
-        textAreaBox = `<input type="text" id="emailInfo" value="${userEmail}"></input>`
-    }
-    htmlString = htmlString + `Enter Email Address: ${textAreaBox}`;
-    $("#emailBox").html(htmlString);
-    
-    htmlString = "";
-    htmlString = htmlString + `${button}`;
-    $("#completeTransaction").html(htmlString);
-
-    htmlString = "";
-    button = `<button id="transactionCancelBtn">Cancel Transaction</button>`
-    htmlString = htmlString + `${button}`;
-    $("#cancelTransaction").html(htmlString);
-})
-
-$(document).on("click", "#transactionCheckout", function() {
-    let creditNumber = $("#creditInfo").val();
-    let billingAddress = $("#billingInfo").val();
-    let zip = $("#zipInfo").val();
-    let email = $("#emailInfo").val();
-
-    let creditValid = false;
-    let billingValid = false;
-    let zipValid = false;
-    let emailValid = false;
-
-    let checkoutButtons = [2, 102, 112, 122, 202, 212, 222, 302, 312, 322];
-
-    let cardExp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
-    if (cardExp.test(creditNumber) == true) {
-        creditValid = true;
-    }
-    else {
-        alert("Invalid Card Info");
-    }
-
-    billingValid = addressHandling(billingAddress);
-
-    if (billingValid == false) {
-        alert("Invalid billing address")
-    }
-
-    emailValid = emailHandling(email);
-
-    if (emailValid == false) {
-        alert("Invalid email address")
-    }
-
-    let zipExp = /^\d{5}$/;
-    if (zipExp.test(zip) == true) {
-        zipValid = true;
-    }
-    else {
-        alert("Invalid zip code")
-    }
-
-    if (creditValid && billingValid && zipValid && emailValid) {
-        for (let i = 0; i < articleIDCart.length; i++) {
-            console.log(articleIDCart);
-            if (articleIDCart[i] == 2) {
-                subscribed = true;
-                $("#2").attr("hidden", true)
-                $("#1").attr("hidden", false)
-                $("#dailyArticle").attr("hidden", false);
-                $(".subscriber").attr("hidden", true);
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartSelect.php",
+        data: {
+            email: userEmail,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            let cost = 0.0;
+            for (let i = 0; i < response.product.length; i++) {
+                cost = cost + Number.parseInt(response.product[i].cost);
             }
-        }
-        
-        articleIDCart = [];
-        articleCostCart = [];
-        $("#transactionContainer").attr("hidden", true);
-        alert("Transaction Successful, Thank You for your Purchase!")
 
-        $(".cartButtonAddPress").attr("disabled", false)
-    }
+            let stringCost = `<p value="${cost}">Cost: \$${cost}</p>`
+            $("#cost").html(stringCost);
+
+            let htmlString = "";
+            let buttonID = `checkoutBtn`;
+            let button = `<button id=${buttonID}>\$${cost}</button>`;
+            htmlString = `Proceed to Checkout: ${button}`
+            $("#checkoutProceed").addClass("text-center")
+            $("#checkoutProceed").html(htmlString);
+         }
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}
+
+$(document).on('click', '#checkoutBtn', function() {
+    window.location.replace('/HTML/transaction.html')
 })
 
-$(document).on("click", "#transactionCancelBtn", function() {
-    articleIDCart = [];
-    articleCostCart = [];
 
-    $("#transactionContainer").attr("hidden", true);
-    alert("Transaction Successfully Canceled")
-    $(".cartButtonAddPress").attr("disabled", false)
-})
+// Old functionality for proceeding to checkout.
+// $(document).on("click", "#checkoutBtn", function() {
+//     $("#checkoutContainer").attr("hidden", true);
+//     $("#transactionContainer").attr("hidden", false);
+//     let htmlString = "";
+//     for (let i = 0; i < articleIDCart.length; i++) {
+//         if (articleIDCart[i] != 2) {
+//             htmlString = htmlString + `Article ID: ${articleIDCart[i]}, Price: \$${articleCostCart[i]}<br>`;
+//         }
+//         else {
+//             htmlString = htmlString + `Subscription, Price: \$${articleCostCart[i]}<br>`;
+//         }
+//     }
+//     $("#itemList").html(htmlString);
+//     getCost();
 
-$(document).on("click", "#1", function() {
-    $("#unsubscribeContainer").attr("hidden", false)
-})
+//     $(".cartButtonAddPress").attr("disabled", true);
 
-$(document).on("click", "#unsubscribeButton", function() {
-    $("#1").attr("hidden", true);
-    $("#2").attr("hidden", false);
-    subscribed = false;
-    $("#unsubscribeContainer").attr("hidden", true);
-    $("#dailyArticle").attr("hidden", true);
-    $(".subscriber").attr("hidden", false);
-    alert("You have successfully unsubscribed!");
+//     htmlString = "";
+//     let textAreaBox = `<input type="text" id="creditInfo" placeholder="0123-4567-8910-1112"></input>`
+//     let button = `<button id="transactionCheckout">Complete Transaction</button>`
+//     htmlString = htmlString + `Enter Credit Card Info: ${textAreaBox}`;
+//     $("#creditBox").html(htmlString);
+
+//     htmlString = "";
+//     if (userAddress === null) {
+//         textAreaBox = `<input type="text" id="billingInfo" placeholder="1234 rainbow rd."></input>`
+//     }
+//     else {
+//         textAreaBox = `<input type="text" id="billingInfo" value="${userAddress}"></input>`
+//     }
     
-})
+//     htmlString = htmlString + `Enter Billing Address: ${textAreaBox}`;
+//     $("#billingBox").html(htmlString);
 
-function addressHandling(address) {
-   if (address.length == 0) {return false;}
+//     htmlString = "";
+//     textAreaBox = `<input type="text" id="zipInfo" placeholder="16802"></input>`
+//     htmlString = htmlString + `Enter Zip Code: ${textAreaBox}`;
+//     $("#zipBox").html(htmlString);
 
-   let atCount = 0;
-   for (let i = 0; i < address.length; i++) {
-      if (address.charCodeAt(i) == 64) {
-         atCount = atCount + 1;
-      }
-   }
-   if (atCount > 1) {return false;}
+//     htmlString = "";
+//     if (userEmail === null) {
+//         textAreaBox = `<input type="text" id="emailInfo" placeholder="example@example.com"></input>`
+//     }
+//     else {
+//         textAreaBox = `<input type="text" id="emailInfo" value="${userEmail}"></input>`
+//     }
+//     htmlString = htmlString + `Enter Email Address: ${textAreaBox}`;
+//     $("#emailBox").html(htmlString);
+    
+//     htmlString = "";
+//     htmlString = htmlString + `${button}`;
+//     $("#completeTransaction").html(htmlString);
 
-   for (let i = 0; i < address.length; i++) {
-      if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32) || (address.charCodeAt(i) == 46)) {}
-      else {return false;}
-   }
+//     htmlString = "";
+//     button = `<button id="transactionCancelBtn">Cancel Transaction</button>`
+//     htmlString = htmlString + `${button}`;
+//     $("#cancelTransaction").html(htmlString);
+// })
 
-   return true;
-}
 
-function emailHandling(email) {
-   if (email.length == 0) {return false;}
+// Old functionality for checking out.
+// $(document).on("click", "#transactionCheckout", function() {
+//     let creditNumber = $("#creditInfo").val();
+//     let billingAddress = $("#billingInfo").val();
+//     let zip = $("#zipInfo").val();
+//     let email = $("#emailInfo").val();
 
-   if (email.includes('@')) {}
-   else {return false;}
+//     let creditValid = false;
+//     let billingValid = false;
+//     let zipValid = false;
+//     let emailValid = false;
 
-   let atCount = 0;
-   for (let i = 0; i < email.length; i++) {
-      if (email.charCodeAt(i) == 64) {
-         atCount = atCount + 1;
-      }
-   }
-   if (atCount > 1) {return false;}
+//     let checkoutButtons = [2, 102, 112, 122, 202, 212, 222, 302, 312, 322];
 
-   if (email.includes('.')) {}
-   else {return false;}
+//     let cardExp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+//     if (cardExp.test(creditNumber) == true) {
+//         creditValid = true;
+//     }
+//     else {
+//         alert("Invalid Card Info");
+//     }
 
-   for (let i = 0; i < email.length; i++) {
-      if ((email.charCodeAt(i) >= 64 && email.charCodeAt(i) <= 90) || (email.charCodeAt(i) >= 97 && email.charCodeAt(i) <= 122) || (email.charCodeAt(i) >= 48 && email.charCodeAt(i) <= 57) || (email.charCodeAt(i) == 46)) {}
-      else {return false;}
-   }
+//     billingValid = addressHandling(billingAddress);
 
-   return true;
-}
+//     if (billingValid == false) {
+//         alert("Invalid billing address")
+//     }
+
+//     emailValid = emailHandling(email);
+
+//     if (emailValid == false) {
+//         alert("Invalid email address")
+//     }
+
+//     let zipExp = /^\d{5}$/;
+//     if (zipExp.test(zip) == true) {
+//         zipValid = true;
+//     }
+//     else {
+//         alert("Invalid zip code")
+//     }
+
+//     if (creditValid && billingValid && zipValid && emailValid) {
+//         for (let i = 0; i < articleIDCart.length; i++) {
+//             console.log(articleIDCart);
+//             if (articleIDCart[i] == 2) {
+//                 subscribed = true;
+//                 $("#2").attr("hidden", true)
+//                 $("#1").attr("hidden", false)
+//                 $("#dailyArticle").attr("hidden", false);
+//                 $(".subscriber").attr("hidden", true);
+//             }
+//         }
+        
+//         articleIDCart = [];
+//         articleCostCart = [];
+//         $("#transactionContainer").attr("hidden", true);
+//         alert("Transaction Successful, Thank You for your Purchase!")
+
+//         $(".cartButtonAddPress").attr("disabled", false)
+//     }
+// })
+
+
+// Old functionality for canceling a checkout.
+// $(document).on("click", "#transactionCancelBtn", function() {
+//     articleIDCart = [];
+//     articleCostCart = [];
+
+//     $("#transactionContainer").attr("hidden", true);
+//     alert("Transaction Successfully Canceled")
+//     $(".cartButtonAddPress").attr("disabled", false)
+// })
+
+// $(document).on("click", "#1", function() {
+//     $("#unsubscribeContainer").attr("hidden", false)
+// })
+
+// $(document).on("click", "#unsubscribeButton", function() {
+//     $("#1").attr("hidden", true);
+//     $("#2").attr("hidden", false);
+//     subscribed = false;
+//     $("#unsubscribeContainer").attr("hidden", true);
+//     $("#dailyArticle").attr("hidden", true);
+//     $(".subscriber").attr("hidden", false);
+//     alert("You have successfully unsubscribed!");
+    
+// })
+
+
+// Old data verification for address & email.
+// function addressHandling(address) {
+//    if (address.length == 0) {return false;}
+
+//    let atCount = 0;
+//    for (let i = 0; i < address.length; i++) {
+//       if (address.charCodeAt(i) == 64) {
+//          atCount = atCount + 1;
+//       }
+//    }
+//    if (atCount > 1) {return false;}
+
+//    for (let i = 0; i < address.length; i++) {
+//       if ((address.charCodeAt(i) >= 65 && address.charCodeAt(i) <= 90) || (address.charCodeAt(i) >= 97 && address.charCodeAt(i) <= 122) || (address.charCodeAt(i) >= 48 && address.charCodeAt(i) <= 57) || (address.charCodeAt(i) == 32) || (address.charCodeAt(i) == 46)) {}
+//       else {return false;}
+//    }
+
+//    return true;
+// }
+
+// function emailHandling(email) {
+//    if (email.length == 0) {return false;}
+
+//    if (email.includes('@')) {}
+//    else {return false;}
+
+//    let atCount = 0;
+//    for (let i = 0; i < email.length; i++) {
+//       if (email.charCodeAt(i) == 64) {
+//          atCount = atCount + 1;
+//       }
+//    }
+//    if (atCount > 1) {return false;}
+
+//    if (email.includes('.')) {}
+//    else {return false;}
+
+//    for (let i = 0; i < email.length; i++) {
+//       if ((email.charCodeAt(i) >= 64 && email.charCodeAt(i) <= 90) || (email.charCodeAt(i) >= 97 && email.charCodeAt(i) <= 122) || (email.charCodeAt(i) >= 48 && email.charCodeAt(i) <= 57) || (email.charCodeAt(i) == 46)) {}
+//       else {return false;}
+//    }
+
+//    return true;
+// }
 
 $(document).ready(function() {
     getDynamicArticleElements();
+    preventDuplicate();
 })
 
 function getDynamicArticleElements() {
@@ -767,3 +921,31 @@ $('.dislike').on('click', function() {
         })
     }
 })
+
+function preventDuplicate() {
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartSelect.php",
+        data: {
+            email: userEmail,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            if (response.product.length != 0) {
+                for (let i = 0; i < response.product.length; i++) {
+                    $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
+                }
+                renderCart(response);
+            }
+         }
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}

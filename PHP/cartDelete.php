@@ -2,17 +2,15 @@
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(isset($_POST['email']) && isset($_POST['productID']) && isset($_POST['cost'])) {
+    if(isset($_POST['email']) && isset($_POST['productID'])) {
         $email = $_POST['email'];
         $productID = $_POST['productID'];
-        $cost = $_POST['cost'];
 
         try {
             $db = new SQLite3('./SQLite3/account/shoppingcartHandler.db');
-            $stmt = $db->prepare('INSERT INTO cart (email, productID, cost) VALUES (?, ?, ?)');
+            $stmt = $db->prepare('DELETE FROM cart WHERE email=? AND productID=?');
             $stmt->bindValue(1, $email);
             $stmt->bindValue(2, $productID);
-            $stmt->bindValue(3, $cost);
             $stmt->execute();
             $db->close();
             echo json_encode(['success' => true]);
