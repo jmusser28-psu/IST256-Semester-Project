@@ -11,12 +11,12 @@ $("#signin").on("click", function() {
       },
       success: function(response) {
          if (response.success == true) {
-            alert("Successfully Signed in!");
-            console.log(response)
             localStorage.clear("user");
             localStorage.clear("address");
             localStorage.setItem("user", JSON.stringify(response.member.email));
             localStorage.setItem("address", JSON.stringify(response.member.address));
+            alert("Successfully Signed in!");
+            window.location.replace('/index.html');
          }
          else {
             alert("An error occurred, please try again later.");

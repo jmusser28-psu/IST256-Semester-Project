@@ -68,7 +68,6 @@ $(document).ready(function() {
       success: function(response) {
          if (response.success == true) {
             writeMembers(response);
-            alert("Successfully obtained members");
          }
          else {
             alert("An error occurred, please try again later.");

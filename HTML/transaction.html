@@ -53,8 +53,9 @@
                         <option value="/HTML/members.html">Members</option>
                     </select>
 
-                    <button type="button" id="2" value ="20" class="cartButtonAddPress btn btn-light notLoggedIn">Subscribe</button>
+                    <button type="button" id="2" value ="20" class="btn btn-light notLoggedIn">Subscribe</button>
                     <button type="button" id="1" class="btn btn-light" hidden>Unsubscribe</button>
+                    <button type="button" id="3" class="btn btn-light" hidden>Cart</button>
                 </div>
             </nav>
         </header>
@@ -63,16 +64,16 @@
         <div class="card">
             <div class="container-fluid d-flex flex-column card-body padding" id="transactionContainer">
                 <div class="container-md border rounded">
+                    <p id="transactionList" class="text-left"></p>
                     <p class="text-left" id="creditBox"></p>
                     <p class="text-left" id="billingBox"></p>
                     <p class="text-left" id="zipBox"></p>
                     <p class="text-left" id="emailBox"></p>
-                    <p class="text-left" id="completeTransaction"></p>
+                    <p class="text-left" id="cancelTransaction"></p>
                 </div>
                 <div class="container-md border rounded">
-                    <p id="transactionList" class="text-end"></p>
                     <p id="transactionCost" class="text-end" value="0"></p>
-                    <p class="text-end" id="cancelTransaction"></p>
+                    <p class="text-end" id="completeTransaction"></p>
                 </div>
             </div>
         </div>

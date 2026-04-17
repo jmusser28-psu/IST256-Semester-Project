@@ -379,43 +379,44 @@ $(document).on("click", ".cartButtonAddPress", function() {
 
 })
 
-function renderCart() {
-    $("#checkoutContainer").attr("hidden", false);
+// Ported over to shoppingcart.js
+// function renderCart() {
+//     $("#checkoutContainer").attr("hidden", false);
 
-    $.ajax({
-        type: "POST",
-        url: "/PHP/cartSelect.php",
-        data: {
-            email: userEmail,
-        },
-        dataType: "json",
-        success: function(response) {
-         if (response.success == true) {
-            let htmlString = "";
+//     $.ajax({
+//         type: "POST",
+//         url: "/PHP/cartSelect.php",
+//         data: {
+//             email: userEmail,
+//         },
+//         dataType: "json",
+//         success: function(response) {
+//          if (response.success == true) {
+//             let htmlString = "";
             
-            for (let i = 0; i < response.product.length; i++) {
-                let buttonID = `${response.product[i].productID}btn`;
-                let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn btn btn-dark">Remove from Cart</button>`;
-                if (response.product[i].productID != 0) {
-                    htmlString = htmlString + `Article ID: ${response.product[i].productID}, Price: \$${response.product[i].cost} ${button}<br>`;
-                }
-                else {
-                    htmlString = htmlString + `Subscription, Price: \$${response.product[i].cost} ${button}<br>`;
-                }
-            }
-            $("#checkoutList").html(htmlString);
+//             for (let i = 0; i < response.product.length; i++) {
+//                 let buttonID = `${response.product[i].productID}btn`;
+//                 let button = `<button value=${response.product[i].productID} id=${buttonID} class="removeBtn btn btn-dark">Remove from Cart</button>`;
+//                 if (response.product[i].productID != 0) {
+//                     htmlString = htmlString + `Article ID: ${response.product[i].productID}, Price: \$${response.product[i].cost} ${button}<br>`;
+//                 }
+//                 else {
+//                     htmlString = htmlString + `Subscription, Price: \$${response.product[i].cost} ${button}<br>`;
+//                 }
+//             }
+//             $("#checkoutList").html(htmlString);
 
-            getCost();
-         }
-         else {
-            alert("An error occurred, please try again later.");
-         }
-      },
-      error: function() {
-         alert("A fatal error occurred, please try again later.");
-      }
-    })
-}
+//             getCost();
+//          }
+//          else {
+//             alert("An error occurred, please try again later.");
+//          }
+//       },
+//       error: function() {
+//          alert("A fatal error occurred, please try again later.");
+//       }
+//     })
+// }
 
 // Old Functionality for removing from cart.
 // $(document).on("click", ".buttonPress", function() {
@@ -453,37 +454,38 @@ function renderCart() {
 //     getCost();
 // })
 
-$(document).on("click", ".removeBtn", function() {
-    let id = $(this).val();
+// Ported over to shoppingcart.js
+// $(document).on("click", ".removeBtn", function() {
+//     let id = $(this).val();
 
-    $.ajax({
-        type: "POST",
-        url: "/PHP/cartDelete.php",
-        data: {
-            email: userEmail,
-            productID: id,
-        },
-        dataType: "json",
-        success: function(response) {
-         if (response.success == true) {
-            alert("Successfully removed from cart");
+//     $.ajax({
+//         type: "POST",
+//         url: "/PHP/cartDelete.php",
+//         data: {
+//             email: userEmail,
+//             productID: id,
+//         },
+//         dataType: "json",
+//         success: function(response) {
+//          if (response.success == true) {
+//             alert("Successfully removed from cart");
 
-            let jQueryId = '#' + (parseInt(id) + 2.0);
-            $(jQueryId).attr('disabled', false)
-            renderCart();
-            getCost(response);
-         }
+//             let jQueryId = '#' + (parseInt(id) + 2.0);
+//             $(jQueryId).attr('disabled', false)
+//             renderCart();
+//             getCost(response);
+//          }
 
-         else {
-            alert("An error occurred, please try again later.");
-         }
-      },
+//          else {
+//             alert("An error occurred, please try again later.");
+//          }
+//       },
 
-      error: function() {
-         alert("A fatal error occurred, please try again later.");
-      }
-    })
-})
+//       error: function() {
+//          alert("A fatal error occurred, please try again later.");
+//       }
+//     })
+// })
 
 // Old functionality for getting a cost
 // function getCost() {
@@ -504,44 +506,45 @@ $(document).on("click", ".removeBtn", function() {
 //     $("#checkoutProceed").html(htmlString);
 // }
 
-function getCost() {
-    $.ajax({
-        type: "POST",
-        url: "/PHP/cartSelect.php",
-        data: {
-            email: userEmail,
-        },
-        dataType: "json",
-        success: function(response) {
-         if (response.success == true) {
-            let cost = 0.0;
-            for (let i = 0; i < response.product.length; i++) {
-                cost = cost + Number.parseInt(response.product[i].cost);
-            }
+// Ported over to shoppingcart.js
+// function getCost() {
+//     $.ajax({
+//         type: "POST",
+//         url: "/PHP/cartSelect.php",
+//         data: {
+//             email: userEmail,
+//         },
+//         dataType: "json",
+//         success: function(response) {
+//          if (response.success == true) {
+//             let cost = 0.0;
+//             for (let i = 0; i < response.product.length; i++) {
+//                 cost = cost + Number.parseInt(response.product[i].cost);
+//             }
 
-            let stringCost = `<p value="${cost}">Cost: \$${cost}</p>`
-            $("#cost").html(stringCost);
+//             let stringCost = `<p value="${cost}">Cost: \$${cost}</p>`
+//             $("#cost").html(stringCost);
 
-            let htmlString = "";
-            let buttonID = `checkoutBtn`;
-            let button = `<button id=${buttonID} class="btn btn-dark">\$${cost}</button>`;
-            htmlString = `Proceed to Checkout: ${button}`
-            $("#checkoutProceed").addClass("text-center")
-            $("#checkoutProceed").html(htmlString);
-         }
-         else {
-            alert("An error occurred, please try again later.");
-         }
-      },
-      error: function() {
-         alert("A fatal error occurred, please try again later.");
-      }
-    })
-}
+//             let htmlString = "";
+//             let buttonID = `checkoutBtn`;
+//             let button = `<button id=${buttonID} class="btn btn-dark">\$${cost}</button>`;
+//             htmlString = `Proceed to Checkout: ${button}`
+//             $("#checkoutProceed").addClass("text-center")
+//             $("#checkoutProceed").html(htmlString);
+//          }
+//          else {
+//             alert("An error occurred, please try again later.");
+//          }
+//       },
+//       error: function() {
+//          alert("A fatal error occurred, please try again later.");
+//       }
+//     })
+// }
 
-$(document).on('click', '#checkoutBtn', function() {
-    window.location.replace('/HTML/transaction.html')
-})
+// $(document).on('click', '#checkoutBtn', function() {
+//     window.location.replace('/HTML/transaction.html')
+// })
 
 
 // Old functionality for proceeding to checkout.
@@ -743,6 +746,7 @@ $(document).on('click', '#checkoutBtn', function() {
 $(document).ready(function() {
     getDynamicArticleElements();
     preventDuplicate();
+    getOwned();
 })
 
 function getDynamicArticleElements() {
@@ -953,6 +957,36 @@ function preventDuplicate() {
             if (response.product.length != 0) {
                 for (let i = 0; i < response.product.length; i++) {
                     $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
+                }
+            }
+         }
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}
+
+function getOwned() {
+    $.ajax({
+        type: "POST",
+        url: "/PHP/transactionSelect.php",
+        data: {
+            email: userEmail,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            if (response.product.length != 0) {
+                for (let i = 0; i < response.product.length; i++) {
+                    if (response.product[i].productID == 0) {}
+                    else {
+                        $('#' + (parseInt(response.product[i].productID) + parseInt(4))).attr('hidden', true);
+                    }
                 }
             }
          }

@@ -210,6 +210,7 @@ function submitPUSH() {
       success: function(response) {
          if (response.success == true) {
             alert("Member added successfully!");
+            window.location.replace('/index.html');
          }
          else {
             alert("An error occurred, please try again later.");

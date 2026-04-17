@@ -14,8 +14,10 @@ $(document).ready(function() {
                         `)
         $("#management").attr("value", user);
         $("#management").removeAttr('onchange');
+        $('#3').attr('hidden', false);
     }
 
+    preventDuplicate();
     getSubscription();
 })
 
@@ -79,4 +81,89 @@ $(document).on("click", "#1", function() {
          alert("A fatal error occurred, please try again later.");
       }
     })
+})
+
+$(document).on("click", "#2", function() {
+    let id = $(this).attr('id');
+    id = "#" + id;
+
+    $(id).attr("disabled", true);
+    
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartAdd.php",
+        data: {
+            email: user,
+            productID: $(this).attr('id') - parseInt(2),
+            cost: $(this).val(),
+        },
+        success: function(response) {
+            if (response.success == true) {
+                location.reload();
+            }
+            else {
+                alert("An error occurred, please try again later.");
+            }
+        },
+        error: function() {
+            alert("A fatal error occurred, please try again later.");
+        }
+    })
+
+})
+
+function preventDuplicate() {
+    $.ajax({
+        type: "POST",
+        url: "/PHP/cartSelect.php",
+        data: {
+            email: user,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            if (response.product.length != 0) {
+                for (let i = 0; i < response.product.length; i++) {
+                    $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
+                }
+            }
+         }
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+
+    $.ajax({
+        type: "POST",
+        url: "/PHP/transactionSelect.php",
+        data: {
+            email: user,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {
+            if (response.product.length != 0) {
+                for (let i = 0; i < response.product.length; i++) {
+                    $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
+                }
+            }
+         }
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+}
+
+$(document).on("click", "#3", function() {
+    window.location.replace('/HTML/shoppingcart.html');
 })
