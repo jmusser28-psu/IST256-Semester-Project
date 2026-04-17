@@ -365,9 +365,7 @@ $(document).on("click", ".cartButtonAddPress", function() {
             cost: $(this).val(),
         },
         success: function(response) {
-            if (response.success == true) {
-                renderCart();
-            }
+            if (response.success == true) {}
             else {
                 alert("An error occurred, please try again later.");
             }
@@ -765,6 +763,16 @@ function getDynamicArticleElements() {
                 jQueryId = '#' + jQueryId;
                 $(jQueryId).html('Dislikes: ' + response.article[i].dislikes)
                 $(jQueryId).attr('value', parseInt(response.article[i].dislikes));
+
+                if (response.article[i].cost == 0) {
+                    jQueryId = parseInt(response.article[i].id) + parseInt(2);
+                    jQueryId = '#' + jQueryId;
+                    $(jQueryId).attr('disabled', true);
+
+                    jQueryId = parseInt(response.article[i].id) + parseInt(4);
+                    jQueryId = '#' + jQueryId;
+                    $(jQueryId).attr('hidden', true);
+                }
             }
          }
          else {
@@ -932,7 +940,6 @@ function preventDuplicate() {
                 for (let i = 0; i < response.product.length; i++) {
                     $('#' + (parseInt(response.product[i].productID) + parseInt(2))).attr('disabled', true);
                 }
-                renderCart(response);
             }
          }
 
