@@ -27,7 +27,7 @@ $('#management').on("change", function(event) {
         localStorage.clear('user');
         localStorage.clear('address');
         alert("Successfully signed out");
-        location.reload();
+        window.location.replace('/index.html')
     }
     else if ($(this).val() == 'purchases') {
         window.location.replace('/HTML/purchases.html')
