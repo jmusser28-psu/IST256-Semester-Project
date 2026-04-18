@@ -103,6 +103,7 @@ function writeMembers(response) {
 
 $(document).on("click", "#deleteMember", function() {
     let email = $(this).val();
+    
     $.ajax({
       type: "POST",
       url: "/PHP/memberDelete.php",
@@ -112,8 +113,6 @@ $(document).on("click", "#deleteMember", function() {
       success: function(response) {
          if (response.success == true) {
             writeMembers(response);
-            alert("Successfully deleted member");
-            location.reload();
          }
          else {
             alert("An error occurred, please try again later.");
@@ -123,4 +122,44 @@ $(document).on("click", "#deleteMember", function() {
          alert("A fatal error occurred, please try again later.");
       }
    })
+
+   $.ajax({
+        type: "POST",
+        url: "/PHP/transactionCancel.php",
+        data: {
+            email: email,
+        },
+        dataType: "json",
+        success: function(response) {
+         if (response.success == true) {}
+
+         else {
+            alert("An error occurred, please try again later.");
+         }
+      },
+
+      error: function() {
+         alert("A fatal error occurred, please try again later.");
+      }
+    })
+    
+    $.ajax({
+         type: "POST",
+         url: "/PHP/transactionDelete.php",
+         data: {
+               email: email,
+         },
+         dataType: "json",
+         success: function(response) {
+            if (response.success == true) {}
+            else {
+               alert("Failure");
+            }
+         },
+         error: function() {
+            alert("A fatal error occurred, please try again later.");
+         }
+      })    
+    
+      location.reload();
 })
